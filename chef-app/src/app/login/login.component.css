@@ -1,10 +1,27 @@
 #continueButton{
 	background-color: #df1944;
 	color:#ffffff;
-	font-weight: 10px;
+	/*font-weight: 10px;*/
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 2px;
 	font-size: 16px;
+	margin-top: 10px;
+}
+/deep/.mat-input-underline{
+	display: none;
+}
+/deep/.mat-input-infix{
+	border: 2px solid #df1944;
+	text-align: center;
+}
+/*/deep/.mat-focused .mat-input-placeholder{
+	color: #ffffff;
+}*/
+/deep/.mat-input-element{
+	text-align: center;
+}
+/deep/.mat-toolbar{
+	background: #ffffff;
 }
 .wrapper{
 	display: flex;
@@ -12,8 +29,18 @@
 .pinkDivision{
 	background-color: #df1944;
 	height:100vh;
-	width:20vw;
+	width:35vw;
+}
+.toolbarDivision{
+	width: 100%;
 }
 .mainDivision{
-	height:100%;
+	height: 100%;
+	width: 100%;
+	align-self: center;
+}
+.loginFields{
+	display: grid;
+	width: fit-content;
+	margin: auto;
 }

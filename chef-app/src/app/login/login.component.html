@@ -2,12 +2,19 @@
 	<div class="pinkDivision">
 	</div>
 	<div class="mainDivision">
-		<span><md-input-container>
-			<input mdInput placeholder="Username">
-		</md-input-container></span>
-		<span><md-input-container>
-			<input mdInput placeholder="Password">
-		</md-input-container></span>
-		<span><button md-button id="continueButton"><b>CONTINUE</b></button></span>
+		<form #loginForm="ngForm" (ngSubmit)="checkUser(username.value,password.value)">
+		<div class="loginFields form-group">
+			<md-input-container floatPlaceholder="never">
+				<input mdInput placeholder="Username" #username>
+			</md-input-container>
+			<md-input-container floatPlaceholder="never">
+				<input mdInput placeholder="Password" type="password" #password>
+			</md-input-container>
+			<section>
+				<button md-button type="submit" id="continueButton"><b>CONTINUE</b></button>
+			</section>
+			<!-- {{hint}} -->
+		</div>
+		</form>
 	</div>
 </div>

@@ -8,7 +8,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
 import {
   MdInputModule,
-  MdButtonModule
+  MdButtonModule,
+  MdIconModule,
+  MdToolbarModule,
+  MdSnackBarModule,
+  MdDialogModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -16,9 +20,12 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '', pathMatch: 'full', redirectTo: '/login'},
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -37,9 +44,13 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     MdInputModule,
-    MdButtonModule
+    MdButtonModule,
+    MdIconModule,
+    MdToolbarModule,
+    MdSnackBarModule,
+    MdDialogModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
