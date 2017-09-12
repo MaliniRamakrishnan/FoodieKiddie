@@ -16,8 +16,8 @@ export class AuthService {
     this.headers.append("Content-Type", "application/x-www-form-urlencoded");
   }
 
-  login(username:string,password:string){
-  	let body = {"username": username, "password": password, "role": "chef"};
+  login(email:string,password:string){
+  	let body = {"email": email, "password": password, "role": "chef"};
     this.http.post(this.loginURL, body,{ headers: this.headers}).subscribe(
         result => this.data = result,
     	  () => console.log("Failed..."),
