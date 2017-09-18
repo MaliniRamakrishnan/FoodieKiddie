@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body{
+	font-family: 'Roboto', sans-serif;
+	margin: 0px;
+}
+.spacer{
+	flex: 1 1 auto;
+}
+
+/*Tablets Screen Sizes
+Width: 600 to 2732;
+Height: 600 to 2048;
+*/

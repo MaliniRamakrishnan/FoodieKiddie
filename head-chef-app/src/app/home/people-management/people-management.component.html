@@ -1,0 +1,198 @@
+<div class="wrapper">
+	<div class="pinkDivision">
+        <div id="headchefDetails">
+            <legend>HEAD CHEF DETAILS</legend>
+            <span>HC ID: {{headchefID}}</span>
+            <span>NAME : {{username}}</span>
+            <span>PHONE: {{phone}}</span>
+            <span>EMAIL: {{email}}</span>
+        </div>
+        <div id="kitchenDetails">
+            <legend>KITCHEN DETAILS</legend>
+            <span>ID: {{kitchenID}},</span>
+            <span>{{nameOfLocation}},</span>
+            <span>No. {{locationDoorNumber}},</span>
+            <span>{{locationLandmark}}</span>
+            <span>{{locationStreet}},</span>
+            <span>{{locationCity}},</span>
+            <span>{{locationState}},</span>
+            <span>{{locationCountry}}.</span>
+            <span>PINCODE: {{locationPIN}}</span>
+        </div>
+	</div>
+	<div class="mainDivision">
+		<md-toolbar>
+			<span>People Management</span>
+    		<span class="spacer"></span>
+    		<img class="iconStyler" alt="Home" src="../../../assets/icon_house.png">
+    		<img class="iconStyler" alt="Stock" src="../../../assets/icon_store.png">
+    		<img class="iconStyler" alt="User" src="../../../assets/icon_user.png">
+		</md-toolbar>
+    <md-tab-group dynamicHeight="true">
+        <md-tab label="Chefs">
+            <div class="example-container mat-elevation-z8">
+                <div class="headerDabba">
+                  <div class="filterStyler">
+                      <md-form-field floatPlaceholder="never">
+                          <input mdInput #cfilter placeholder="Filter by Name">
+                      </md-form-field>
+                  </div>
+                  <span class="spacer"></span>
+                  <div class="addPpl">
+                    <img class="iconStyler plus" alt="User" src="../../../assets/icon_add.png" (click)="showAddForm('chef')">
+                  </div>
+                </div>
+                <div *ngIf="caddFormFlag" class="addFormStyler">
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #name placeholder="Name">
+                  </md-input-container>
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #email placeholder="E-Mail">
+                  </md-input-container>
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #phone placeholder="Phone">
+                  </md-input-container>
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #expertise placeholder="Expertise">
+                  </md-input-container>
+                  <button md-button (click)="addChef(name.value, email.value, phone.value, expertise.value)" class="generateIDButton">GENERATE ID</button>
+                  <button md-button (click)="cancel('chef')" class="saveButton">CANCEL</button>
+                </div>
+                <div class="editPpl" *ngIf="ceditFlag">
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #name placeholder="Name" [(ngModel)]="tc2">
+                  </md-input-container>
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #email placeholder="E-Mail" [(ngModel)]="tc3">
+                  </md-input-container>
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #phone placeholder="Phone" [(ngModel)]="tc4">
+                  </md-input-container>
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #expertise placeholder="Expertise" [(ngModel)]="tc5">
+                  </md-input-container>
+                  <button md-button (click)="editChef()" class="saveButton">SAVE CHANGES</button>
+                  <button md-button (click)="cancel('chef')" class="saveButton">CANCEL</button>
+                </div>
+                <div *ngIf="ctableReady">
+                  <md-table #ctable [dataSource]="cdataSource">
+                      <ng-container mdColumnDef="id">
+                          <md-header-cell *mdHeaderCellDef> CHEF ID </md-header-cell>
+                          <md-cell *mdCellDef="let row" #c1> {{row.id}} </md-cell>
+                      </ng-container>
+                      <ng-container mdColumnDef="name">
+                        <md-header-cell *mdHeaderCellDef> NAME </md-header-cell>
+                        <md-cell *mdCellDef="let row" #c2> {{row.name}} </md-cell>
+                      </ng-container>
+                      <ng-container mdColumnDef="email">
+                        <md-header-cell *mdHeaderCellDef> EMAIL </md-header-cell>
+                        <md-cell *mdCellDef="let row" #c3> {{row.email}} </md-cell>
+                      </ng-container>
+                      <ng-container mdColumnDef="phone">
+                        <md-header-cell *mdHeaderCellDef> PHONE </md-header-cell>
+                        <md-cell *mdCellDef="let row" #c4> {{row.phone}} </md-cell>
+                      </ng-container>
+                      <ng-container mdColumnDef="expertise">
+                        <md-header-cell *mdHeaderCellDef> EXPERTISE </md-header-cell>
+                        <md-cell *mdCellDef="let row" #c5> {{row.expertise}} </md-cell>
+                      </ng-container>
+                      <ng-container mdColumnDef="edit">
+                        <md-header-cell *mdHeaderCellDef> EDIT </md-header-cell>
+                        <md-cell *mdCellDef="let row" (click)="editChefSet(row.id,row.name,row.email,row.phone,row.expertise)"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_edit.png"></md-cell>
+                      </ng-container>                        
+                      <ng-container mdColumnDef="delete">
+                        <md-header-cell *mdHeaderCellDef> DELETE </md-header-cell>
+                        <md-cell *mdCellDef="let row" (click)="deletePerson(row.id,'chef')"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_house.png"></md-cell>
+                      </ng-container>
+                      <md-header-row *mdHeaderRowDef="cdisplayedColumns">
+                      </md-header-row>
+                      <md-row *mdRowDef="let row; columns: cdisplayedColumns;" [ngClass]="{'DELETED':(row.id===whichCDelete)}" class="rowStyler">
+                      </md-row>
+                  </md-table>
+                </div>
+            </div>
+        </md-tab>
+        <md-tab label="Delivery Guys">
+            <div class="example-container mat-elevation-z8">
+              <div class="headerDabba">
+                <div class="filterStyler">
+                  <md-form-field floatPlaceholder="never">
+                    <input mdInput #dgfilter placeholder="Filter by Name">
+                  </md-form-field>
+                </div>
+                <span class="spacer"></span>
+                <div class="addPpl">
+                  <img class="iconStyler plus" alt="User" src="../../../assets/icon_add.png" (click)="showAddForm('Delivery Guy')">
+                </div>
+              </div>
+              <div *ngIf="dgaddFormFlag" class="addFormStyler">
+                <md-input-container floatPlaceholder="never">
+                  <input mdInput #dgname placeholder="Name">
+                </md-input-container>
+                <md-input-container floatPlaceholder="never">
+                  <input mdInput #dgemail placeholder="E-Mail">
+                </md-input-container>
+                <md-input-container floatPlaceholder="never">
+                  <input mdInput #dgphone placeholder="Phone">
+                </md-input-container>
+                <button md-button (click)="addDG(dgname.value, dgemail.value, dgphone.value)" class="generateIDButton">GENERATE ID</button>
+                <button md-button (click)="cancel('dg')" class="saveButton">CANCEL</button>
+              </div>
+              <div class="editPpl" *ngIf="dgeditFlag">
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #name placeholder="Name" [(ngModel)]="tdg2">
+                  </md-input-container>
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #email placeholder="E-Mail" [(ngModel)]="tdg3">
+                  </md-input-container>
+                  <md-input-container floatPlaceholder="never">
+                    <input mdInput #phone placeholder="Phone" [(ngModel)]="tdg4">
+                  </md-input-container>
+                  <button md-button (click)="editDG()" class="saveButton">SAVE CHANGES</button>
+                  <button md-button (click)="cancel('dg')" class="saveButton">CANCEL</button>
+                </div>
+              <div *ngIf="dgtableReady">
+                <md-table #dgtable [dataSource]="dgdataSource">
+                    <ng-container mdColumnDef="id">
+                        <md-header-cell *mdHeaderCellDef>DELIVERY GUY ID </md-header-cell>
+                        <md-cell *mdCellDef="let row" #dg1> {{row.id}} </md-cell>
+                    </ng-container>
+                    <ng-container mdColumnDef="name">
+                      <md-header-cell *mdHeaderCellDef> NAME </md-header-cell>
+                      <md-cell *mdCellDef="let row" #dg2> {{row.name}} </md-cell>
+                    </ng-container>
+                    <ng-container mdColumnDef="email">
+                      <md-header-cell *mdHeaderCellDef> EMAIL </md-header-cell>
+                      <md-cell *mdCellDef="let row" #dg3> {{row.email}} </md-cell>
+                    </ng-container>
+                    <ng-container mdColumnDef="phone">
+                      <md-header-cell *mdHeaderCellDef> PHONE </md-header-cell>
+                      <md-cell *mdCellDef="let row" #dg4> {{row.phone}} </md-cell>
+                    </ng-container>
+                    <ng-container mdColumnDef="currentLocation">
+                      <md-header-cell *mdHeaderCellDef> CURRENT LOCATION </md-header-cell>
+                      <md-cell *mdCellDef="let row"> {{row.currentLocationLatitude}}, {{row.currentLocationLongitude}}</md-cell>
+                    </ng-container>
+                    <ng-container mdColumnDef="orderAssignment">
+                      <md-header-cell *mdHeaderCellDef> ORDERS ASSIGNED </md-header-cell>
+                      <md-cell *mdCellDef="let row"> {{row.orderAssignment}}</md-cell>
+                    </ng-container>
+                    <ng-container mdColumnDef="edit">
+                      <md-header-cell *mdHeaderCellDef> EDIT </md-header-cell>
+                      <md-cell *mdCellDef="let row" (click)="editDGSet(row.id,row.name,row.email,row.phone)"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_edit.png"></md-cell>
+                    </ng-container>                        
+                    <ng-container mdColumnDef="delete">
+                      <md-header-cell *mdHeaderCellDef> DELETE </md-header-cell>
+                      <md-cell *mdCellDef="let row" (click)="deletePerson(row.id,'dg')"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_house.png"></md-cell>
+                    </ng-container>
+                    <md-header-row *mdHeaderRowDef="dgdisplayedColumns">
+                    </md-header-row>
+                    <md-row *mdRowDef="let row; columns: dgdisplayedColumns;" [ngClass]="{'DELETED':(row.id===whichDGDelete)}" class="rowStyler">
+                    </md-row>
+                </md-table>
+              </div>
+            </div>
+        </md-tab>
+    </md-tab-group>
+	</div>
+</div>

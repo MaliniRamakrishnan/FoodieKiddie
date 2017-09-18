@@ -1,0 +1,128 @@
+.plus{
+  width: 22px;
+}
+.edde{
+  width: 18px;
+}
+/deep/.mat-toolbar{
+	color: #df1944;
+	font-family: 'Roboto', sans-serif;
+}
+/deep/.mat-tab-label,/deep/.mat-tab-body-content{
+	font-family: 'Roboto', sans-serif;
+	width: 100%;
+}
+/deep/.mat-ink-bar {
+    color: #df1944 !important;
+    background-color: #df1944 !important;
+}
+.addFormStyler, .editPpl{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-top: 50px;
+}
+.generateIDButton, .saveButton{
+  background-color: #df1944;
+  color: #ffffff;
+  margin-top: 12px;
+}
+.wrapper{
+	display: flex;
+}
+.pinkDivision{
+	background-color: #df1944;
+	height:100vh;
+	width:30vw;
+	align-self: center;
+}
+.mainDivision{
+	height: 100%;
+	width: 100%;
+}
+.iconStyler{
+	margin: 0 4px;
+	cursor: pointer;
+}
+#headchefDetails{
+	width: 100%;
+	display: inline-grid;
+	color: #ffffff;
+  margin-bottom: 8px;
+}
+#kitchenDetails{
+	width: 100%;
+	display: inline-grid;
+	color: #ffffff;
+  margin-top: 8px;
+}
+legend {
+    display: block;
+    width: 100%;
+    padding: 4px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: inherit;
+    color: #FFC107;
+    border: 0;
+    border-bottom: 1px solid #FFEB3B;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+.headerDabba{
+  display: flex;
+  flex-direction: row;
+}
+.addPpl{
+  align-self: center;
+}
+.example-header {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  font-size: 20px;
+}
+.filterStyler {
+  min-height: 64px;
+  display: flex;
+  width: 50%;
+  align-items: baseline;
+  padding: 16px 8px 0;
+  font-size: 20px;
+  justify-content: space-between;
+}
+/deep/.mat-focused /deep/.mat-form-field-placeholder{
+	display: none;
+}
+/deep/.mat-form-field-underline /deep/.mat-form-field-ripple{
+	background-color: #FFEB3B;
+}
+.filterStyler /deep/.mat-form-field {
+  font-size: 14px;
+  flex-grow: 1;
+}
+/deep/.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+/deep/.mat-row{
+  align-items: center;
+  padding: 2px 12px;
+}
+/deep/.mat-cell,/deep/.mat-header-cell{
+  text-align: center;
+}
+/*/deep/.mat-header-cell{
+  font-size: 18px;
+}*/
+/deep/.mat-header-row,/deep/.mat-row{
+  padding: 0px 8px;
+}
+.rowStyler.DELETED{
+  text-decoration: line-through;
+}
