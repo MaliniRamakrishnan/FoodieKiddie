@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        tools:text="Monday" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="350dp"
+
+        android:layout_height="200dp"
+        android:layout_below="@+id/textView7"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        app:cardBackgroundColor="?attr/colorControlHighlight">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="149dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/cardView"
+            app:srcCompat="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:text="FEEDBACK" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="227dp"
+            android:layout_marginTop="150dp"
+            android:text="DELIVERED" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="45dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            tools:text="SALAD" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="155dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="89dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            tools:text="RS.50" />
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
