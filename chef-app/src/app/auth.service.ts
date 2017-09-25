@@ -7,11 +7,12 @@ import { MdSnackBar } from '@angular/material';
 export class AuthService {
   
   data: any;
-  loginURL = 'https://foodiekiddiee.000webhostapp.com/post_tester.php';
+  userID: string = null; kitchenID: string;
+  loginURL = 'https://foodiekiddiee.000webhostapp.com/login.php';
   headers: Headers;
   redirectURL: string;
 
-  constructor(private http: Http, private router: Router, public snackBar: MdSnackBar){
+  constructor(private http: Http, private khttp: Http, private router: Router, public snackBar: MdSnackBar){
   	this.headers = new Headers();
     this.headers.append("Content-Type", "application/x-www-form-urlencoded");
   }
@@ -22,19 +23,38 @@ export class AuthService {
         result => this.data = result,
     	  () => console.log("Failed..."),
     	  () => { 
-          console.log(this.data.json()); 
-          if(this.data.json()=="success") this.router.navigate(['/home']);
-          else { 
-            console.log(this.data.json()); 
+          console.log(this.data.json()["data"]); 
+          if(this.data.json()["data"]=="failed"){
             let snackBarRef = this.snackBar.open('Invalid Credentials',' Try Again',
               { duration: 3000 });
+            }
+          else {
+            this.userID = this.data.json()["data"];
+            this.fetchKitchenID();
           }
         }
     );
   }
 
+  fetchKitchenID(){
+    let kheaders = new Headers();
+    kheaders.append("Content-Type", "application/x-www-form-urlencoded");
+    let body = {"userID":this.userID}; let data;
+    let kitchenURL = 'https://foodiekiddiee.000webhostapp.com/chef/kitchenID.php';
+    this.khttp.post(kitchenURL, body, { headers: kheaders}).subscribe(
+      result=> data = result.json(),
+      ()=> console.log("Failed..."),
+      ()=> {
+        console.log(data["0"]["kitchenID"]);
+        this.kitchenID=data["0"]["kitchenID"];
+        this.router.navigate(['/home']);
+      }
+    );
+  }
+
   logout(): void {
 	  this.data = null;
+    this.userID = null;
 	  this.router.navigate(["/login"]);
   }
 

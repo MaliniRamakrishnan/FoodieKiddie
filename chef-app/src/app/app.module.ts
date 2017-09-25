@@ -12,7 +12,8 @@ import {
   MdIconModule,
   MdToolbarModule,
   MdSnackBarModule,
-  MdDialogModule
+  MdDialogModule,
+  MdTableModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -22,6 +23,8 @@ import { HomeComponent } from './home/home.component';
 
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
+
+import { HomeModule } from './home/home.module';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -42,15 +45,18 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HomeModule,
     RouterModule.forRoot(appRoutes),
     MdInputModule,
     MdButtonModule,
     MdIconModule,
     MdToolbarModule,
     MdSnackBarModule,
-    MdDialogModule
+    MdDialogModule,
+    MdTableModule
   ],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

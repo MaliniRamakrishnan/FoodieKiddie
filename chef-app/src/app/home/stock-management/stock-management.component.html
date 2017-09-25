@@ -1,0 +1,36 @@
+<div class="wrapper">
+	<div class="pinkDivision">
+	</div>
+	<div class="mainDivision">
+		<md-toolbar>
+			<span>Stock Management</span>
+    		<span class="spacer"></span>
+    		<img class="iconStyler" alt="Home" src="../../../assets/icon_house.png" (click)="goto('order')">
+    		<img class="iconStyler" alt="Profile" src="../../../assets/icon_user.png" (click)="goto('profile')">
+    		<img class="iconStyler" alt="Stock" src="../../../assets/icon_store.png" (click)="goto('stock')">
+		</md-toolbar>
+    <div *ngIf="ingredientsTableReady" class="example-header mat-elevation-z8">
+      <md-table #ingtable [dataSource]="ingDataSource">
+        <ng-container mdColumnDef="ingID">
+            <md-header-cell *mdHeaderCellDef> INGREDIENT ID </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.id}} </md-cell>
+        </ng-container>
+        <ng-container mdColumnDef="name">
+          <md-header-cell *mdHeaderCellDef> INGREDIENT NAME </md-header-cell>
+          <md-cell *mdCellDef="let row"> {{row.name}} </md-cell>
+        </ng-container>
+        <ng-container mdColumnDef="refill">
+          <md-header-cell *mdHeaderCellDef> REFILL </md-header-cell>
+          <md-cell *mdCellDef="let row" (click)="refill(row.id)">
+          	<button md-button *ngIf="!checkStock(row.id)" class="requestButton"> REQUEST </button>
+            <span *ngIf="checkStock(row.id)"> Already requested </span>
+          </md-cell>
+        </ng-container>
+        <md-header-row *mdHeaderRowDef="ingDisplayedColumns">
+        </md-header-row>
+        <md-row *mdRowDef="let row; columns: ingDisplayedColumns;" [ngClass]="{'REFILL':checkStock(row.id)}" class="rowStyler">
+        </md-row>
+      </md-table>
+    </div>
+	</div>
+</div>

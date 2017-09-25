@@ -1,0 +1,24 @@
+.wrapper{
+	display: flex;
+}
+.toolbarDivision{
+	width: 100%;
+}
+.pinkDivision{
+	background-color: #df1944;
+	height:100vh;
+	width:35vw;
+}
+.mainDivision{
+	height: 100%;
+	width: 100%;
+	/*align-self: center;*/
+}
+/deep/.mat-toolbar{
+	color: #df1944;
+	font-family: 'Roboto', sans-serif;
+}
+.iconStyler{
+	margin: 0 4px;
+	cursor: pointer;
+}

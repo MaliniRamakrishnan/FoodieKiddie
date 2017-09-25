@@ -14,11 +14,12 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.data=="success") {
-    return true;
-   }
-   // console.log("in checkLogin else auth guard");
-    // Store the attempted URL for redirecting
+    if (this.authService.userID) {
+      // console.log("authguard true part");
+      return true;
+    }  
+    // console.log("in checkLogin else auth guard");
+    //Store the attempted URL for redirecting
     this.authService.redirectURL = url;
     // Navigate to the login page with extras
     this.router.navigate(['/login']);

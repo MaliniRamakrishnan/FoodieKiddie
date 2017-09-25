@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   checkUser(username:string, password:string){
+    username="ankush@gmail.com"; password="chef-ankush";
     this.authService.login(username,password);
   }
 

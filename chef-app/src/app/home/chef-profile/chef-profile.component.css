@@ -1,28 +1,22 @@
-#continueButton{
+#cancelButton, #changeButton{
 	background-color: #df1944;
 	color:#ffffff;
-	/*font-weight: 10px;*/
-	font-family: 'Roboto', sans-serif;
-	letter-spacing: 2px;
-	font-size: 16px;
-	margin-top: 10px;
 	width: 100%;
+	font-family: 'Roboto', sans-serif;
+	margin-top: 10px;
 }
-/deep/.mat-input-underline{
+.changeFields/deep/.mat-input-underline{
 	display: none;
 }
-/deep/.mat-input-infix{
+.changeFields/deep/.mat-focused /deep/.mat-form-field-placeholder{
+	display: none;
+}
+.changeFields/deep/.mat-input-infix{
 	border: 2px solid #df1944;
 	text-align: center;
 }
-.loginFields/deep/.mat-focused /deep/.mat-form-field-placeholder{
-	display: none;
-}
-/deep/.mat-input-element{
+.changeFields/deep/.mat-input-element{
 	text-align: center;
-}
-/deep/.mat-toolbar{
-	background: #ffffff;
 }
 .wrapper{
 	display: flex;
@@ -40,8 +34,12 @@
 	width: 100%;
 	align-self: center;
 }
-.loginFields{
+.changeFields{
 	display: grid;
 	width: fit-content;
 	margin: auto;
+}
+.hintStyler{
+	width: 100%;
+    text-align: center;
 }

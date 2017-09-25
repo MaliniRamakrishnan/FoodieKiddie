@@ -8,10 +8,12 @@ import {
   MdToolbar,
   MaterialModule 
 } from '@angular/material';
-
 import 'hammerjs';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { ChefProfileComponent } from './chef-profile/chef-profile.component';
+import { OrderComponent } from './order/order.component';
+import { StockManagementComponent } from './stock-management/stock-management.component';
 
 @NgModule({
   imports: [
@@ -21,8 +23,8 @@ import { HomeRoutingModule } from './home-routing.module';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  declarations: [],
+  declarations: [ChefProfileComponent, OrderComponent, StockManagementComponent],
   entryComponents: []
 })
 
-export class ParentModule {}
+export class HomeModule{}

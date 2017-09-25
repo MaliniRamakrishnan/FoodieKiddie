@@ -1,0 +1,26 @@
+<div class="wrapper">
+	<div class="pinkDivision">
+	</div>
+	<div class="mainDivision">
+		<form #changeForm="ngForm" (ngSubmit)="changePassword()">
+		<div class="changeFields form-group">
+			<md-input-container floatPlaceholder="never">
+				<input mdInput placeholder="Old Password" type="password" [(ngModel)]="oldP" name="oldp">
+			</md-input-container>
+			<md-input-container floatPlaceholder="never">
+				<input mdInput placeholder="New Password" type="password" [(ngModel)]="newP" name="newp">
+			</md-input-container>
+			<md-input-container floatPlaceholder="never">
+				<input mdInput placeholder="Confirm New Password" type="password" [(ngModel)]="cnewP" name="cnewp">
+			</md-input-container>
+			<section>
+				<button md-button type="submit" id="changeButton">CHANGE PASSWORD</button>
+			</section>
+			<section>
+				<button md-button id="cancelButton" (click)="cancel()">CANCEL</button>
+			</section>
+		</div>
+		<div class="hintStyler">{{hint}}</div>
+		</form>
+	</div>
+</div>
