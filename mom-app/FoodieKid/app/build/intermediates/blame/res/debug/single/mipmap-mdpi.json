@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher_round.png",
+        "source": "/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    }
+]

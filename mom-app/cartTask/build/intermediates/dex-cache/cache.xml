@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_581d69a036936ffa5e52ef929e1c2bfe7a7ba2ad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/srivikashini/.android/build-cache/ec38ca6370ca2772354678922223a6e88380db48/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e176fd06c2ad5b50a2f5cb4de6000a83a7cb48f5">
+        <dex dex="/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8697735b2307985792c1272dc91df09554a188ed/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d143e4a360c042786c7cb1fb88acf37299bab31c">
+        <dex dex="/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6ff675a54ccedf08750038315b50b66891b97f24/classes.dex" />
+    </item>
+
+</items>

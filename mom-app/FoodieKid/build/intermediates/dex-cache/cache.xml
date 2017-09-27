@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="1969e97eacc9003454a84dcd876be5e3f3bd6aad">
+        <dex dex="/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_633156551be5a107350a1b4c37510666a2d0fa32/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4e357f13c21f3da208a22b2547668e39c7ae6615/classes.dex" />
+    </item>
+
+</items>

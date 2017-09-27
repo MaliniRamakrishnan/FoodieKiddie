@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher_round.png",
+        "source": "/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    }
+]

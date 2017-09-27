@@ -1,0 +1,7 @@
+#Fri Sep 22 22:57:02 IST 2017
+base.0=/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6ff675a54ccedf08750038315b50b66891b97f24
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_581d69a036936ffa5e52ef929e1c2bfe7a7ba2ad/classes.dex
+base.1=/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_581d69a036936ffa5e52ef929e1c2bfe7a7ba2ad
+file.0=/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6ff675a54ccedf08750038315b50b66891b97f24/classes.dex

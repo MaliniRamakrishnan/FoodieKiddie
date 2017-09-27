@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/srivikashini/.android/build-cache/c523fb173d0e7b2f25a1d7e0ada14a11f1e7973a/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/srivikashini/.android/build-cache/c523fb173d0e7b2f25a1d7e0ada14a11f1e7973a/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/srivikashini/.android/build-cache/c523fb173d0e7b2f25a1d7e0ada14a11f1e7973a/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/srivikashini/Documents/AndroidStudioProjects/cartTask/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/srivikashini/.android/build-cache/c523fb173d0e7b2f25a1d7e0ada14a11f1e7973a/output/res/layout-v21/notification_action_tombstone.xml"
+    }
+]

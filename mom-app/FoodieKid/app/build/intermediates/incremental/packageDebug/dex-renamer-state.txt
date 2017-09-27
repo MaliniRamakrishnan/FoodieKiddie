@@ -1,0 +1,7 @@
+#Wed Sep 13 12:42:47 IST 2017
+base.0=/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_633156551be5a107350a1b4c37510666a2d0fa32
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4e357f13c21f3da208a22b2547668e39c7ae6615/classes.dex
+base.1=/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4e357f13c21f3da208a22b2547668e39c7ae6615
+file.0=/Users/srivikashini/Documents/AndroidStudioProjects/FoodieKid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_633156551be5a107350a1b4c37510666a2d0fa32/classes.dex
