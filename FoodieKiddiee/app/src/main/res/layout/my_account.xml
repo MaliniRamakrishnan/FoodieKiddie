@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+
+    android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbarl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:elevation="4dp">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="MY ACCOUNT" />
+
+
+</android.support.v7.widget.Toolbar>
+    <Button
+        android:id="@+id/button77"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:onClick="edit3Tapped"
+        android:background="@android:drawable/ic_menu_edit" />
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        />
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:onClick="edit1Tapped"
+        android:background="@android:drawable/ic_menu_edit" />
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="email" />
+
+<EditText
+    android:id="@+id/email"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="textPersonName"
+    />
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:onClick="edit2Tapped"
+        android:background="@android:drawable/ic_menu_edit" />
+
+<TextView
+    android:id="@+id/textView9"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="contact number" />
+
+<EditText
+    android:id="@+id/contact"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="saveBtnTapped"
+        android:text="save changes" />
+
+<Button
+    android:id="@+id/button6"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:onClick="btnTapped"
+    android:text="change password" />
+
+</LinearLayout>
