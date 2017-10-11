@@ -102,7 +102,7 @@
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3"
         android:layout_centerVertical="true"
-       
+
         android:textSize="20sp"
         android:textColor="@android:color/background_light"/>
 

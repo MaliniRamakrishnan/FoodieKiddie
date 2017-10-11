@@ -111,8 +111,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="38dp"
         android:background="@drawable/linestwo"
-        android:gravity="center|fill"
+
         android:text="capsicum"
+        android:gravity="center|fill"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="26sp"

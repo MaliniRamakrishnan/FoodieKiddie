@@ -1,5 +1,6 @@
 package com.example.srivikashini.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,17 +21,18 @@ public class olivepreference extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.olivepref);
-        one = (Button)findViewById(R.id.button2);
-        two = (Button)findViewById(R.id.button3);
-        three = (Button)findViewById(R.id.button4);
-        four = (Button)findViewById(R.id.button5);
-        next = (Button)findViewById(R.id.button7);
+        setContentView(R.layout.olivelevelshap);
+        one = (Button)findViewById(R.id.button6);
+        two = (Button)findViewById(R.id.button8);
+        three = (Button)findViewById(R.id.button9);
+        four = (Button)findViewById(R.id.button10);
+        next = (Button)findViewById(R.id.button16);
         t1 = (TextView)findViewById(R.id.textView2);
-        opone = (TextView)findViewById(R.id.textView);
-        optwo = (TextView)findViewById(R.id.textView3);
-        opthree = (TextView)findViewById(R.id.textView4);
-        opfour = (TextView)findViewById(R.id.textView5);
+        opone = (Button)findViewById(R.id.button15);
+        optwo = (Button)findViewById(R.id.button12);
+        opthree = (Button)findViewById(R.id.button13);
+        opfour = (Button)findViewById(R.id.button14);
+
         category = "olive oil";
         t1.setText(category);
         final String capsipref = getIntent().getExtras().getString("alters");
@@ -42,6 +44,8 @@ public class olivepreference extends AppCompatActivity {
 
                 Toast.makeText(olivepreference.this, "The preferences are:" + capsipref + "\n" + category + ":" +quantityPref, Toast.LENGTH_LONG).show();
 
+//                Intent i =  new Intent(olivepreference.this,oliveprf.class);
+//                startActivity(i);
             }
         });
 
@@ -50,31 +54,34 @@ public class olivepreference extends AppCompatActivity {
     {
        switch (v.getId())
        {
-           case R.id.button2 : opone.setText(one.getText().toString());
-               optwo.setText("");
-               opthree.setText("");
-                opfour.setText("");
+           case R.id.button6 :
+
+
+             one.setText(opone.getText().toString());
+               two.setText("");
+               three.setText("");
+                four.setText("");
                quantityPref = one.getText().toString();
                break;
-           case R.id.button3 : optwo.setText(two.getText().toString());
-               opthree.setText("");
-               opfour.setText("");
-               opone.setText("");
+           case R.id.button8 : two.setText(optwo.getText().toString());
+               three.setText("");
+               four.setText("");
+               one.setText("");
 
                quantityPref = two.getText().toString();
 
                break;
-           case R.id.button4 : opthree.setText(three.getText().toString());
-               opone.setText("");
-               optwo.setText("");
-               opfour.setText("");
+           case R.id.button9 : three.setText(opthree.getText().toString());
+               one.setText("");
+               two.setText("");
+               four.setText("");
 
                quantityPref = three.getText().toString();
                break;
-           case R.id.button5 : opfour.setText(four.getText().toString());
-               opone.setText("");
-               optwo.setText("");
-               opthree.setText("");
+           case R.id.button10 : four.setText(opfour.getText().toString());
+               one.setText("");
+               two.setText("");
+               three.setText("");
                quantityPref = four.getText().toString();
                break;
 
