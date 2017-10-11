@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".olivepreference"></activity>
-        <activity android:name=".oliveprf"></activity>
     </application>
 
 </manifest>

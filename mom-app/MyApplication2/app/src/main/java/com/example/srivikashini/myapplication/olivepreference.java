@@ -44,8 +44,7 @@ public class olivepreference extends AppCompatActivity {
 
                 Toast.makeText(olivepreference.this, "The preferences are:" + capsipref + "\n" + category + ":" +quantityPref, Toast.LENGTH_LONG).show();
 
-//                Intent i =  new Intent(olivepreference.this,oliveprf.class);
-//                startActivity(i);
+
             }
         });
 
