@@ -7,7 +7,7 @@ import { MdSnackBar } from '@angular/material';
 export class AuthService {
   
   data: any;
-  userID: string = null; kitchenID: string;
+  userID: string = null; kitchenID: string; expertise: string;
   loginURL = 'https://foodiekiddiee.000webhostapp.com/login.php';
   headers: Headers;
   redirectURL: string;
@@ -30,23 +30,24 @@ export class AuthService {
             }
           else {
             this.userID = this.data.json()["data"];
-            this.fetchKitchenID();
+            this.fetchChefDetails();
           }
         }
     );
   }
 
-  fetchKitchenID(){
+  fetchChefDetails(){
     let kheaders = new Headers();
     kheaders.append("Content-Type", "application/x-www-form-urlencoded");
     let body = {"userID":this.userID}; let data;
-    let kitchenURL = 'https://foodiekiddiee.000webhostapp.com/chef/kitchenID.php';
+    let kitchenURL = 'https://foodiekiddiee.000webhostapp.com/chef/chefDetail.php';
     this.khttp.post(kitchenURL, body, { headers: kheaders}).subscribe(
       result=> data = result.json(),
       ()=> console.log("Failed..."),
       ()=> {
-        console.log(data["0"]["kitchenID"]);
+        console.log(data["0"]["kitchenID"] + data["0"]["expertiseCuisine"] + data["0"]["expertiseCategory"]);
         this.kitchenID=data["0"]["kitchenID"];
+        this.expertise=data["0"]["expertiseCuisine"]+" "+data["0"]["expertiseCategory"];
         this.router.navigate(['/home']);
       }
     );

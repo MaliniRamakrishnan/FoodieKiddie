@@ -13,7 +13,8 @@ import {
   MdToolbarModule,
   MdSnackBarModule,
   MdDialogModule,
-  MdTableModule
+  MdTableModule,
+  MdSelectModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     MdToolbarModule,
     MdSnackBarModule,
     MdDialogModule,
-    MdTableModule
+    MdTableModule,
+    MdSelectModule
   ],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]

@@ -11,7 +11,21 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams} from '@angula
 export class OrderComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService, private http: Http) { }
-
+  
+  options = [
+    {value: 'chef-cuisine', viewValue: this.authService.expertise},
+    {value: 'all', viewValue: 'All'}
+    ];
+  tiles = [
+    {text: 'One'},
+    {text: 'Two'},
+    {text: 'Three'},
+    {text: 'Four'},
+    {text: 'Five'},
+    {text: 'Six'},
+    {text: 'Seven'}
+  ];
+  
   ngOnInit() {
   }
 

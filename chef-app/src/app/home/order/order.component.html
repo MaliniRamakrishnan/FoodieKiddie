@@ -9,5 +9,31 @@
     		<img class="iconStyler" alt="Profile" src="../../../assets/icon_user.png" (click)="goto('profile')">
     		<img class="iconStyler" alt="Stock" src="../../../assets/icon_store.png" (click)="goto('stock')">
 		</md-toolbar>
+		<div class="viewSelector">
+	      <md-select placeholder="Select View" [(ngModel)]="selectedValue" name="option">
+	        <md-option *ngFor="let option of options" [value]="option.value">
+	          {{option.viewValue}}
+	        </md-option>
+	      </md-select>
+		</div>
+		<div class="orders-div">
+			<md-grid-list cols="3" rowHeight="300px" class="order-grid">
+			  <md-grid-tile *ngFor="let tile of tiles" [colspan]="1" [rowspan]="1">
+			    <md-card class="order-card">
+				  <md-card-header>
+				    <md-card-title>
+				    	<span>{{tile.text}}</span>
+				    	<span>Item Name</span>
+				    	<span>QTY</span>
+				    </md-card-title>
+				  </md-card-header>
+				  <img md-card-image src="../../../assets/item0.jpg" alt="Photo of an Item">
+				  <md-card-actions>
+				    <button md-button>VIEW ALTERNATIVES</button>
+				  </md-card-actions>
+				</md-card>
+			  </md-grid-tile>
+			</md-grid-list>
+		</div>
 	</div>
 </div>
