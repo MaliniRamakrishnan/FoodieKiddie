@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#df1944</color>
+    <color name="colorPrimaryDark">#a1203c</color>
+    <color name="colorAccent">#a61546</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="foreground_material_light">#ffffff</color>
+    <color name="primary_text_material_light">#ffffff</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="album_title">#4c4c4c</color>
+    <color name="whitecolor">#ffffff</color>
+</resources>

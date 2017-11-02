@@ -1,4 +1,4 @@
-package com.example.maliniramki.tabs;
+package com.example.srivikashini.navigated;
 
 /**
  * Created by Malini Ramki on 28-09-2017.
@@ -16,14 +16,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class OneFragment extends Fragment {
+public class OneActivity extends Fragment {
 
     ListView startersList;
-    String[] itemString, priceString, typeString, picString, cuisineString;
+    String[] itemString, priceString, typeString, picString, cuisineString, itmid;
     String result, images;
     int num;
 
-    public OneFragment() {
+    public OneActivity() {
         // Required empty public constructor
     }
 
@@ -52,8 +52,8 @@ public class OneFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        ItemsAdapter adapter = new ItemsAdapter(getContext(), itemString, priceString, typeString, picString, cuisineString);
-        startersList = OneFragment.this.getActivity().findViewById(R.id.startersList);
+        ItemsAdapter adapter = new ItemsAdapter(getContext(), itmid, itemString, priceString, typeString, picString, cuisineString);
+        startersList = OneActivity.this.getActivity().findViewById(R.id.startersList);
         startersList.setAdapter(adapter);
     }
 
@@ -65,12 +65,14 @@ public class OneFragment extends Fragment {
             JSONObject row = array.getJSONObject(ctrl);
             if(row.getString("category").equals("Starters")){count++;}
         }
+        itmid = new String[count];
         itemString = new String[count]; priceString = new String[count];
         cuisineString = new String[count];
         typeString = new String[count]; picString = new String[count];
         for(int ctrl=0; ctrl<num;ctrl++){
             JSONObject row = array.getJSONObject(ctrl);
             if(row.getString("category").equals("Starters")){
+                itmid[x] = row.getString("id");
                 itemString[x] = row.getString("name");
                 priceString[x] = row.getString("price");
                 typeString[x] = row.getString("typeOfFood");

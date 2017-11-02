@@ -1,54 +1,68 @@
-package com.example.maliniramki.tabs;
+package com.example.srivikashini.navigated;
 
-import android.support.v7.app.AppCompatActivity;
+/**
+ * Created by srivikashini on 26/10/17.
+ */
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
+
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
-
+public class HomeFragment extends Fragment {
+    private FragmentActivity myContext;
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     String postData, url;
     Bundle bundle;
     Fragment one,two,three,four;
+    public HomeFragment() {
+        // Required empty public constructor
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    }
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.tab_main, container, false);
+
 
         try { getMenu(); }
         catch (Exception e) { e.printStackTrace(); }
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager)rootView.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout)rootView.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
+        // Inflate the layout for this fragment
+        return rootView;
     }
-
     private void setupViewPager(ViewPager viewPager) {
-        one = new OneFragment(); two = new TwoFragment();
-        three = new ThreeFragment(); four = new FourFragment();
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        one = new OneActivity(); two = new TwoActivity();
+        three = new ThreeActivity(); four = new FourActivity();
+       ViewPagerAdapter adapter = new ViewPagerAdapter(myContext.getSupportFragmentManager());
 
         one.setArguments(bundle); two.setArguments(bundle);
         three.setArguments(bundle); four.setArguments(bundle);
@@ -72,14 +86,14 @@ public class MainActivity extends AppCompatActivity {
 
         String result = null;
         try {
-            result = new BackgroundWorker(MainActivity.this).execute(postData, url).get();
+            result = new BackgroundWorker(getContext()).execute(postData, url).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
         JSONObject json_data = new JSONObject(result);
 
         if (json_data.getString("data").equals("failed")) {
-            Toast.makeText(getApplicationContext(), "Sorry, try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Sorry, try again.", Toast.LENGTH_LONG).show();
         } else {
             bundle = new Bundle();
             bundle.putString("result",result);
@@ -92,29 +106,28 @@ public class MainActivity extends AppCompatActivity {
         try {
             jsonObject.put("data", null);
         } catch (JSONException e) {
-            e.printSatackTrace();
+            e.printStackTrace();
         }
         String imgpostData = jsonObject.toString();
         String imgurl = Constants.food_pics;
 
         String images = null;
         try {
-            images = new BackgroundWorker(MainActivity.this).execute(imgpostData, imgurl).get();
+            images = new BackgroundWorker(getContext()).execute(imgpostData, imgurl).get();
             //Toast.makeText(getApplicationContext(),"img\n"+images,Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(),"error img\n"+e.toString(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),"error img\n"+e.toString(),Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
         JSONObject json_data = new JSONObject(images);
 
         if (json_data.getString("pics").equals("failed")) {
-            Toast.makeText(getApplicationContext(), "Sorry, try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Sorry, try again.", Toast.LENGTH_LONG).show();
         } else {
             //Toast.makeText(getApplicationContext(),"img\n"+images,Toast.LENGTH_LONG).show();
             bundle.putString("images",images);
         }
     }
-
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -143,5 +156,15 @@ public class MainActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+    @Override
+    public void onAttach(Activity activity) {
 
+        myContext=(FragmentActivity) activity;
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
 }

@@ -1,20 +1,15 @@
-package com.example.srivikashini.myapplication;
+package com.example.srivikashini.navigated;
 
 import android.content.Intent;
-import android.support.v4.view.GestureDetectorCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.support.v4.view.GestureDetectorCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity  {
+public class gridPreference extends AppCompatActivity  {
 
     Button one, two, three, four;
     TextView t1;
@@ -25,7 +20,7 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.gridprefer);
         one = (Button) findViewById(R.id.one);
         two = (Button) findViewById(R.id.two);
         three = (Button) findViewById(R.id.three);
@@ -38,7 +33,7 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(MainActivity.this, "go back", Toast.LENGTH_LONG).show();
+                Toast.makeText(gridPreference.this, "go back", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -46,7 +41,7 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(MainActivity.this, olivepreference.class);
+                Intent mIntent = new Intent(gridPreference.this, olivepreference.class);
                 Bundle mBundle = new Bundle();
                 mBundle.putString("alters", alter);
                 mIntent.putExtras(mBundle);

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="match_parent"
+    android:background="#c11a53">
+
+
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbarl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#c11a53"
+    android:elevation="4dp"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_weight="0.06"
+        android:text="MY ACCOUNT"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+
+</android.support.v7.widget.Toolbar>
+
+<Button
+    android:id="@+id/button77"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:onClick="edit3Tapped"
+    android:background="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Name"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp" />
+
+<EditText
+    android:id="@+id/name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="textPersonName"
+    />
+<Button
+    android:id="@+id/button7"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:onClick="edit1Tapped"
+    android:background="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="email"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp" />
+
+<EditText
+    android:id="@+id/email"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="textPersonName"
+    />
+<Button
+    android:id="@+id/button8"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:onClick="edit2Tapped"
+    android:background="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="contact number"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+
+        android:inputType="textPersonName" />
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:onClick="saveBtnTapped"
+        android:text="save changes"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="btnTapped"
+            android:text="change password"
+        android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="Button"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+
+</LinearLayout>
