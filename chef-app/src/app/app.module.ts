@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
+import { DetailsDialogService } from './home/order/details-dialog.service';
 
 import { HomeModule } from './home/home.module';
 
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
     MdTableModule,
     MdSelectModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, DetailsDialogService],
   bootstrap: [AppComponent]
 })
 

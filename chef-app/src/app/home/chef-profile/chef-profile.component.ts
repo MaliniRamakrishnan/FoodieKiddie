@@ -40,7 +40,7 @@ export class ChefProfileComponent implements OnInit {
   }
 
   cancel(){
-    this.router.navigate(['/home/stock']);
+    this.router.navigate(['/home/order']);
   }
 
 }

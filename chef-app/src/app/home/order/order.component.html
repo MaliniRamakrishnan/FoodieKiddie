@@ -9,31 +9,92 @@
     		<img class="iconStyler" alt="Profile" src="../../../assets/icon_user.png" (click)="goto('profile')">
     		<img class="iconStyler" alt="Stock" src="../../../assets/icon_store.png" (click)="goto('stock')">
 		</md-toolbar>
-		<div class="viewSelector">
-	      <md-select placeholder="Select View" [(ngModel)]="selectedValue" name="option">
-	        <md-option *ngFor="let option of options" [value]="option.value">
-	          {{option.viewValue}}
-	        </md-option>
-	      </md-select>
-		</div>
-		<div class="orders-div">
-			<md-grid-list cols="3" rowHeight="300px" class="order-grid">
-			  <md-grid-tile *ngFor="let tile of tiles" [colspan]="1" [rowspan]="1">
-			    <md-card class="order-card">
-				  <md-card-header>
-				    <md-card-title>
-				    	<span>{{tile.text}}</span>
-				    	<span>Item Name</span>
-				    	<span>QTY</span>
-				    </md-card-title>
-				  </md-card-header>
-				  <img md-card-image src="../../../assets/item0.jpg" alt="Photo of an Item">
-				  <md-card-actions>
-				    <button md-button>VIEW ALTERNATIVES</button>
-				  </md-card-actions>
-				</md-card>
-			  </md-grid-tile>
-			</md-grid-list>
+		<div class="order-list">
+			<div class="viewSelector">
+		      <md-select placeholder="Select View" [(ngModel)]="selectedValue" name="option">
+		        <md-option *ngFor="let option of options" [value]="option.value" (click)="optionChooser()">
+		          {{option.viewValue}}
+		        </md-option>
+		      </md-select>
+			</div>
+			<div class="all-orders" *ngIf="all">
+				<span style="color:#FF5722;font-weight:600;margin-left: 8px">{{message}}</span>
+				<md-grid-list cols="3" rowHeight="300px" class="order-grid">
+				  <md-grid-tile *ngFor="let tile of tiles" [colspan]="1" [rowspan]="1">
+				    <md-card class="order-card" (click)="orderInfo(tile)">
+					  <md-card-header>
+					    <md-card-title> ORDER #{{tile.orderID}} </md-card-title>
+					    <md-card-subtitle> D.TIME: {{tile.deliveryTime}}</md-card-subtitle>
+					  </md-card-header>
+					</md-card>
+				  </md-grid-tile>
+				</md-grid-list>
+			</div>
+			<div class="allc-orders" *ngIf="allc">
+				<span style="color:#FF5722;font-weight:600;margin-left: 8px">{{message}}</span>
+				<md-grid-list cols="3" rowHeight="300px" class="order-grid">
+				  <md-grid-tile *ngFor="let tile of tiles" [colspan]="1" [rowspan]="1">
+				    <md-card class="order-card">
+						  <md-card-header>
+						   	<md-card-subtitle class="aoid" style="margin-bottom: 4px;"> ORDER #{{tile.orderID}} </md-card-subtitle>
+						    <md-card-title>
+						    	<span class="atn"> {{tile.item}} </span>
+						    	<span class="atq"> QUANTITY: {{tile.qty}} </span>
+						    	<div class="adt">
+							    	<span><img src="../../../assets/icon_house.png"></span>
+							    	<span style="color: #3F51B5; font-weight: 600;"> {{tile.deliveryTime}} </span>
+						    	</div>
+						   	</md-card-title>
+						  </md-card-header>
+						  <md-card-actions>
+						    <button md-button (click)="acceptOrder(tile)" class="acceptButton">ACCEPT</button>
+						  </md-card-actions>
+						</md-card>
+				  </md-grid-tile>
+				</md-grid-list>
+			</div>
+			<div class="accepted-orders" *ngIf="accepted">
+				<span style="color:#FF5722;font-weight:600;margin-left: 8px">{{message}}</span>
+				<md-grid-list cols="3" rowHeight="300px" class="order-grid">
+				  <md-grid-tile *ngFor="let tile of tiles" [colspan]="1" [rowspan]="1">
+				    <md-card class="order-card">
+						  <md-card-header>
+						   	<md-card-subtitle class="aoid"> ORDER #{{tile.orderID}} </md-card-subtitle>
+						    <md-card-title>
+						    	<span class="atn"> {{tile.item}} </span>
+						    	<span class="fill-remaining-space"></span>
+						    	<span class="atq"> QUANTITY: {{tile.qty}} </span>
+						    	<div class="adt">
+							    	<span><img src="../../../assets/icon_house.png"></span>
+							    	<span style="color: #DF1944; font-weight: 600;"> {{tile.deliveryTime}} </span>
+						    	</div>
+						   	</md-card-title>
+						  </md-card-header>
+						  <md-card-actions>
+						    <button md-button (click)="acceptOrder(tile)" class="acceptButton">ACCEPT</button>
+						  </md-card-actions>
+						</md-card>
+				  </md-grid-tile>
+				</md-grid-list>
+			</div>
+			<div class="order-info" *ngIf="info">
+				<span class="alertIncome" *ngIf="ordersAdded">ALERT: Check new orders!</span>
+				<h4>ORDER #{{oi.orderID}}</h4>
+				<h5>D.TIME: {{oi.deliveryTime}}</h5>
+				<md-grid-list cols="3" rowHeight="200px" class="order-grid">
+				  <md-grid-tile *ngFor="let oc of oi.items" [colspan]="1" [rowspan]="1">
+				    <md-card class="order-card">
+					  <md-card-header>
+					    <md-card-title>NAME:</md-card-title>
+					    <md-card-subtitle>{{oc.name}}</md-card-subtitle>
+					    <md-card-title>QUANTITY:</md-card-title>
+					    <md-card-subtitle>{{oc.qty}}</md-card-subtitle>
+					  </md-card-header>
+					</md-card>
+				  </md-grid-tile>
+				</md-grid-list>
+				<button md-button id="backButton" (click)="info=false;all=true"> BACK </button>
+			</div>
 		</div>
 	</div>
 </div>

@@ -23,7 +23,7 @@ export class AuthService {
         result => this.data = result,
     	  () => console.log("Failed..."),
     	  () => { 
-          console.log(this.data.json()["data"]); 
+          // console.log(this.data.json()["data"]); 
           if(this.data.json()["data"]=="failed"){
             let snackBarRef = this.snackBar.open('Invalid Credentials',' Try Again',
               { duration: 3000 });
@@ -45,7 +45,7 @@ export class AuthService {
       result=> data = result.json(),
       ()=> console.log("Failed..."),
       ()=> {
-        console.log(data["0"]["kitchenID"] + data["0"]["expertiseCuisine"] + data["0"]["expertiseCategory"]);
+        // console.log(data["0"]["kitchenID"] + data["0"]["expertiseCuisine"] + data["0"]["expertiseCategory"]);
         this.kitchenID=data["0"]["kitchenID"];
         this.expertise=data["0"]["expertiseCuisine"]+" "+data["0"]["expertiseCategory"];
         this.router.navigate(['/home']);

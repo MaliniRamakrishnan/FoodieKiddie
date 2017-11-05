@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body{
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin: 0px;
 }
 .spacer{
