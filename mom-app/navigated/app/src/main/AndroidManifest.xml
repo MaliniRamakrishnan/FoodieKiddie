@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.srivikashini.navigated">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,20 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".login"></activity>
-        <activity android:name=".signUp">
+        <activity android:name=".login">
+
+        </activity>
+        <activity android:name=".signUp"></activity>
+
+        <activity android:name=".changePassword"></activity>
+        <activity android:name=".itemDecri"></activity>
+        <activity android:name=".gridPreference"></activity>
+        <activity android:name=".olivepreference"></activity>
+        <activity android:name=".addKid"></activity>
+        <activity android:name=".kidscladdr"></activity>
+        <activity android:name=".signDecision">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".myAccount"></activity>
-        <activity android:name=".changePassword"></activity>
-        <activity android:name=".itemDecri"></activity>
-        <activity android:name=".gridPreference"></activity>
-        <activity android:name=".olivepreference"></activity>
-        <activity android:name=".cartlist"></activity>
+
     </application>
 
 </manifest>

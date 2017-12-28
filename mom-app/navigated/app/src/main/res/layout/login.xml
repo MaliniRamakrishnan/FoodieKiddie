@@ -53,14 +53,27 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="43dp"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_toRightOf="@+id/textView3"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
         android:background="@android:color/transparent"
         android:onClick="onLogin"
         android:text="login"
+        android:textColor="@color/cardview_light_background"
+        android:layout_below="@+id/checkBox"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText2"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:text="Remember me"
         android:textColor="@color/cardview_light_background" />
 </RelativeLayout>

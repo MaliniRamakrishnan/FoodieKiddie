@@ -3,6 +3,7 @@ package com.example.srivikashini.navigated;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,19 +15,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
 
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
-
+String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        SharedPreferences prefs = getSharedPreferences(Constants.PREFS_FILE, MODE_PRIVATE);
+        id = prefs.getString("kidsId", "No name defined");
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(mToolbar);
@@ -64,8 +65,10 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                           Intent i =new Intent(MainActivity.this,signUp.class);
-                            startActivity(i);
+                            new PrefManager(MainActivity.this).saveLogoutDetails();
+
+                            Intent out = new Intent(MainActivity.this,signDecision.class);
+                            startActivity(out);
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -80,6 +83,10 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             //Setting the title manually
             alert.setTitle("AlertDialogExample");
             alert.show();
+        }
+        if (id == R.id.new_kid){
+            Intent ad = new Intent(MainActivity.this,addKid.class);
+            startActivity(ad);
         }
 
 
@@ -104,9 +111,21 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 title = getString(R.string.title_orders);
                 break;
             case 2:
-//                fragment = new MessagesFragment();
-//                title = getString(R.string.title_messages);
-//                break;
+                fragment = new KidsFragment();
+                title = getString(R.string.title_kid);
+                break;
+            case 3:
+                fragment = new accountFragment();
+                title = getString(R.string.title_account);
+                break;
+            case 4:
+                fragment = new wishlistFragment();
+                title = getString(R.string.title_wishList);
+                break;
+            case 5:
+                fragment = new cartFragment();
+                title = getString(R.string.title_cart);
+                break;
             default:
                 break;
         }
@@ -116,8 +135,6 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_body, fragment);
             fragmentTransaction.commit();
-
-            // set the toolbar title
             getSupportActionBar().setTitle(title);
         }
     }

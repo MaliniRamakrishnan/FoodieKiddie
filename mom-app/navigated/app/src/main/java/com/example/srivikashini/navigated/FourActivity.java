@@ -51,7 +51,6 @@ public class FourActivity extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-
         ItemsAdapter adapter = new ItemsAdapter(getContext(), itemid, itemString, priceString, typeString, picString, cuisineString);
         dessertsList = FourActivity.this.getActivity().findViewById(R.id.dessertsList);
         dessertsList.setAdapter(adapter);

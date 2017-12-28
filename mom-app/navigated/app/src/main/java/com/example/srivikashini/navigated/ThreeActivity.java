@@ -51,8 +51,7 @@ public class ThreeActivity extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-
-        ItemsAdapter adapter = new ItemsAdapter(getContext(), itemid, itemString, priceString, typeString, picString, cuisineString);
+ItemsAdapter adapter = new ItemsAdapter(getContext(), itemid, itemString, priceString, typeString, picString, cuisineString);
         sidesList = ThreeActivity.this.getActivity().findViewById(R.id.sidesList);
         sidesList.setAdapter(adapter);
     }

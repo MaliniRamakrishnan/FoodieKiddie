@@ -1,8 +1,12 @@
 package com.example.srivikashini.navigated;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.widget.BaseAdapter;
 import android.view.View;
@@ -21,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
-public class ItemsAdapter extends BaseAdapter {
+public class ItemsAdapter extends BaseAdapter{
 String url,postData;
     private Context mContext;
     private String[]  Id, Title, Price, TypeOfFood, Pic, Cuisine;
@@ -37,6 +41,7 @@ String url,postData;
         Cuisine = cuisine1;
         int[] tempIds = {R.drawable.icon_veg,R.drawable.icon_nonveg};
         drawableIds = tempIds;
+
     }
 
     public int getCount() {
@@ -73,6 +78,8 @@ String url,postData;
             mViewHolder.title = convertView.findViewById(R.id.title);
             mViewHolder.price = convertView.findViewById(R.id.count);
             mViewHolder.cuisine = convertView.findViewById(R.id.cuisine);
+            final Context context = parent.getContext();
+
             mViewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -92,7 +99,7 @@ String url,postData;
                     try {
 
                         String result = new BackgroundWorker(mContext).execute(postData, url).get();
-                        Intent i = new Intent(mContext,itemDecri.class);
+                        Intent i = new Intent(mContext,itemdecrifrag.class);
                         Bundle mbundle = new Bundle();
                         mbundle.putString("itmid",Id[pos]);
                         mbundle.putString("value",result);

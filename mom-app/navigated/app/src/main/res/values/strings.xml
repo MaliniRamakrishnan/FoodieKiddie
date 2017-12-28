@@ -10,12 +10,16 @@
     <string name="nav_item_orders">My Orders</string>
     <string name="nav_item_kid">Kids Profile</string>
     <string name="nav_item_account">My Account</string>
+    <string name="nav_item_wishlist">My Favourites</string>
+    <string name="nav_item_cart">My Cart</string>
     <!-- navigation drawer item labels  -->
     <string-array name="nav_drawer_labels">
         <item>@string/nav_item_home</item>
         <item>@string/nav_item_orders</item>
         <item>@string/nav_item_kid</item>
         <item>@string/nav_item_account</item>
+        <item>@string/nav_item_wishlist</item>
+        <item>@string/nav_item_cart</item>
     </string-array>
 
     <string name="day1">Monday</string>
@@ -38,6 +42,8 @@
     <string name="title_orders">orders</string>
     <string name="title_home">Home</string>
     <string name="title_account">My Account</string>
+    <string name="title_wishList">My Favourites</string>
+    <string name="title_cart">My Cart</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

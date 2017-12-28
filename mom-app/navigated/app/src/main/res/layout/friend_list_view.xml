@@ -1,80 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="27dp"
-        android:text="TextView" />
+    </RelativeLayout>
+
 
     <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:id="@+id/cardView">
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:layout_weight="0.41"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="@dimen/card_album_radius">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="177dp">
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
-
-                app:srcCompat="@mipmap/ic_launcher" />
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="44dp"
-                android:text="TextView" />
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:scaleType="fitXY" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView2"
-                android:layout_alignStart="@+id/textView2"
-                android:layout_below="@+id/textView2"
-                android:layout_marginTop="28dp"
-                android:text="TextView" />
-            <Button
-                android:id="@+id/button2"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_toEndOf="@+id/thumbnail"
+                android:layout_toRightOf="@+id/thumbnail"
+                android:clickable="true"
+                android:scrollHorizontally="false"
+                android:text="ITEM NAME"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/vnv"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="86dp"
+                android:layout_toEndOf="@+id/count"
+                android:layout_toRightOf="@+id/count" />
+
+            <TextView
+                android:id="@+id/cuisine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:text="FEEDBACK"
-                android:layout_alignParentBottom="true" />
+                android:layout_alignLeft="@+id/count"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/title"
+                android:layout_marginTop="68dp"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+            <!--android:layout_marginBottom="@+id/title"-->
+
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="86dp"
+                android:layout_toRightOf="@+id/thumbnail"
+                android:text="PRICE"
+                android:textAllCaps="true"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/button11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/thumbnail"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/thumbnail"
+                android:text="feedback" />
+
+            <Button
+                android:id="@+id/button22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:text="DELIVERED"
-                android:layout_alignParentBottom="true" />
+                android:layout_alignTop="@+id/button11"
+                android:layout_toEndOf="@+id/count"
+                android:layout_toRightOf="@+id/count"
+                android:text="STATUS" />
+
+            <!--android:layout_marginBottom="@+id/title"-->
 
         </RelativeLayout>
+
     </android.support.v7.widget.CardView>
-
-
-</RelativeLayout>
+</LinearLayout>

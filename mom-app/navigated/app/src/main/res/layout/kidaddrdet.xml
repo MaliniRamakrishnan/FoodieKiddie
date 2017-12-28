@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1000dp"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="School Name" />
+
+        <EditText
+            android:id="@+id/editText13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView16"
+            android:layout_alignStart="@+id/textView16"
+            android:layout_below="@+id/textView16"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText13"
+            android:layout_alignStart="@+id/editText13"
+            android:layout_below="@+id/editText13"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="Location Door Number" />
+
+        <EditText
+            android:id="@+id/editText14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView17"
+            android:layout_alignStart="@+id/textView17"
+            android:layout_below="@+id/textView17"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText14"
+            android:layout_alignStart="@+id/editText14"
+            android:layout_below="@+id/editText14"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="Location Landmark" />
+
+        <EditText
+            android:id="@+id/editText15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView18"
+            android:layout_alignStart="@+id/textView18"
+            android:layout_below="@+id/textView18"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView18"
+            android:layout_alignRight="@+id/textView18"
+            android:layout_below="@+id/editText15"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="Location Street" />
+
+        <EditText
+            android:id="@+id/editText17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText15"
+            android:layout_alignRight="@+id/editText15"
+            android:layout_below="@+id/textView19"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText17"
+            android:layout_alignStart="@+id/editText17"
+            android:layout_below="@+id/editText17"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="Location City" />
+
+        <EditText
+            android:id="@+id/editText18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText17"
+            android:layout_alignStart="@+id/editText17"
+            android:layout_below="@+id/textView21"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText18"
+            android:layout_alignStart="@+id/editText18"
+            android:layout_below="@+id/editText18"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="Location State" />
+
+        <EditText
+            android:id="@+id/editText25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView27"
+            android:layout_alignStart="@+id/textView27"
+            android:layout_alignTop="@+id/textView27"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="@+id/editText25"
+            android:layout_alignParentStart="@+id/editText25"
+            android:layout_below="@+id/editText25"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="Location Country" />
+
+        <EditText
+            android:id="@+id/editText26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText25"
+            android:layout_alignStart="@+id/editText25"
+            android:layout_below="@+id/textView29"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText25"
+            android:layout_alignStart="@+id/editText25"
+            android:layout_below="@+id/editText26"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="Location Zipcode" />
+
+        <EditText
+            android:id="@+id/editText28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText26"
+            android:layout_alignLeft="@+id/editText26"
+            android:layout_alignRight="@+id/editText26"
+            android:layout_alignStart="@+id/editText26"
+            android:layout_below="@+id/textView31"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="@+id/editText25"
+            android:layout_alignParentStart="@+id/editText25"
+            android:layout_below="@+id/editText28"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="Location Latitude" />
+
+        <EditText
+            android:id="@+id/editText29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText26"
+            android:layout_alignLeft="@+id/textView32"
+            android:layout_alignRight="@+id/editText26"
+            android:layout_alignStart="@+id/textView32"
+            android:layout_below="@+id/textView32"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="@+id/editText25"
+            android:layout_alignParentStart="@+id/editText25"
+            android:layout_below="@+id/editText29"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="Location Longitude" />
+
+        <EditText
+            android:id="@+id/editText30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText29"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/editText29"
+            android:layout_below="@+id/textView33"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText29"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/editText30"
+            android:layout_below="@+id/editText30"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
+            android:text="SUBMIT"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</ScrollView>
+
+</RelativeLayout>

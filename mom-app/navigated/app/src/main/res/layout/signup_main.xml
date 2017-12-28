@@ -112,33 +112,6 @@
         android:text="SignUp"
         android:textColor="@color/cardview_light_background"
         android:layout_below="@+id/editText3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/signup"
-        android:layout_alignBottom="@+id/signup"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:background="@android:color/transparent"
-        android:onClick="onTappedLogin"
-        android:text="Login"
-        android:textColor="@color/cardview_light_background" />
-
-    <Button
-        android:id="@+id/addkid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:text="Add kid"
-        android:textColor="@color/cardview_light_background"
-        android:layout_alignBaseline="@+id/login"
-        android:layout_alignBottom="@+id/login"
         android:layout_centerHorizontal="true" />
 
     <TextView

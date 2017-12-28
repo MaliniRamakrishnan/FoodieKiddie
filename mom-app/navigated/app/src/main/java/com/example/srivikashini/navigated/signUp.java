@@ -25,7 +25,7 @@ public class signUp extends AppCompatActivity {
     EditText names;
     String postData, url;
     EditText mails,passs, repasss, contacts;
-    Button login, signup,extra;
+    Button signup;
 
     SharedPreferences sharedpreferences;
 
@@ -39,14 +39,7 @@ public class signUp extends AppCompatActivity {
         repasss = (EditText)findViewById(R.id.editText6);
         contacts = (EditText)findViewById(R.id.editText7);
         signup = (Button)findViewById(R.id.signup);
-        extra = (Button) findViewById(R.id.addkid);
-    extra.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent nav = new Intent(signUp.this, MainActivity.class);
-        startActivity(nav);
-    }
-    });
+
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +86,8 @@ public class signUp extends AppCompatActivity {
                                     editor.putString("momID", data);
                                     editor.apply();
 
-                                    Intent i = new Intent(signUp.this, myAccount.class);
+                                    Intent i = new Intent(signUp.this, login.class);
+                                    i.putExtra("typel","reg");
                                     startActivity(i);
                             }
 
@@ -111,10 +105,6 @@ public class signUp extends AppCompatActivity {
         });
     }
 
-    public void onTappedLogin(View view){
-        Intent i = new Intent(signUp.this, login.class);
-        startActivity(i);
-    }
 
 
 }
