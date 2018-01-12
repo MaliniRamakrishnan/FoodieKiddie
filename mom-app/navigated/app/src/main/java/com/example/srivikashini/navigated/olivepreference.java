@@ -1,8 +1,10 @@
 package com.example.srivikashini.navigated;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -37,19 +39,7 @@ public class olivepreference extends AppCompatActivity {
         pref = (ListView)findViewById(R.id.pref_list);
         mylists = new ArrayList<String>();
         mynames = new ArrayList<String>();
-//        one = (Button)findViewById(R.id.button6);
-//        two = (Button)findViewById(R.id.button8);
-//        three = (Button)findViewById(R.id.button9);
-//        four = (Button)findViewById(R.id.button10);
-//        next = (Button)findViewById(R.id.button16);
-//        t1 = (TextView)findViewById(R.id.textView2);
-//        opone = (Button)findViewById(R.id.button15);
-//        optwo = (Button)findViewById(R.id.button12);
-//        opthree = (Button)findViewById(R.id.button13);
-//        opfour = (Button)findViewById(R.id.button14);
 
-//        category = "olive oil";
-//        t1.setText(category);
         final String val = getIntent().getExtras().getString("value");
        Toast.makeText(olivepreference.this, "The preferences are:" + val , Toast.LENGTH_LONG).show();
 
@@ -92,61 +82,31 @@ public class olivepreference extends AppCompatActivity {
                 int f= position;
 
                 for (int k=0;k<mynames.size();k++){
-                    if( f==k) {
+                   if( f==k) {
                         fudids= mynames.get(k).toString();
-                        Toast.makeText(olivepreference.this,fudids,Toast.LENGTH_LONG).show();
+                       Toast.makeText(olivepreference.this,fudids,Toast.LENGTH_LONG).show();
                         Intent intent=new Intent();
                         intent.putExtra("MESSAGE",fudids);
                         setResult(2,intent);
-                        finish();//finishing activity
-                    }
-                }}
+                        finish();}//finishing activity
+                  }
+                }
 
             });
-//        final String capsipref = getIntent().getExtras().getString("alters");
-//        next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//Toast.makeText(olivepreference.this, "The preferences are:" + val+ "\n" + category + ":" +quantityPref, Toast.LENGTH_LONG).show();
-//    }
-//        });
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("select the alternatives");
 
-        //   }
-//    public void btnSelected(View v)
-//    {
-//       switch (v.getId())
-//       {
-//           case R.id.button6 :
-//
-//
-//             one.setText(opone.getText().toString());
-//               two.setText("");
-//               three.setText("");
-//                four.setText("");
-//               quantityPref = one.getText().toString();
-//               break;
-//           case R.id.button8 : two.setText(optwo.getText().toString());
-//               three.setText("");
-//               four.setText("");
-//               one.setText("");
-//
-//               quantityPref = two.getText().toString();
-//
-//               break;
-//           case R.id.button9 : three.setText(opthree.getText().toString());
-//               one.setText("");
-//               two.setText("");
-//               four.setText("");
-//
-//               quantityPref = three.getText().toString();
-//               break;
-//           case R.id.button10 : four.setText(opfour.getText().toString());
-//               one.setText("");
-//               two.setText("");
-//               three.setText("");
-//               quantityPref = four.getText().toString();
-//               break;
-//
-//       }
-//    }
-    }}
+        builder.setNegativeButton("Ok",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert=builder.create();
+        alert.show();
+    } }

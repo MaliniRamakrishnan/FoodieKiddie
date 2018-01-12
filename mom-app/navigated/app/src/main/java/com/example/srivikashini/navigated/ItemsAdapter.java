@@ -99,7 +99,7 @@ String url,postData;
                     try {
 
                         String result = new BackgroundWorker(mContext).execute(postData, url).get();
-                        Intent i = new Intent(mContext,itemdecrifrag.class);
+                        Intent i = new Intent(mContext,itemDecri.class);
                         Bundle mbundle = new Bundle();
                         mbundle.putString("itmid",Id[pos]);
                         mbundle.putString("value",result);

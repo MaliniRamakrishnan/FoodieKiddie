@@ -29,15 +29,13 @@ import java.util.concurrent.ExecutionException;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by srivikashini on 30/11/17.
- */
+
 public class cartFragment extends DialogFragment  {
 
     ListView dessertsList;
     String[] itemString, priceString, typeString, cuisineString, itemid;
-    String result, images,postData,url,momsId,kidsId,results,resulte,pri;
-    int num,quantity,prices,pripars;
+    String result, images,postData,url,momsId,kidsId,results,resulte,pri, quantity,resultes;
+    int num,prices,pripars;
     Integer price,pripar;
     ArrayList<String> mylist,priclist;
     HashMap<String ,Integer> hm;
@@ -63,16 +61,20 @@ public class cartFragment extends DialogFragment  {
         pricedisp = (TextView)rootView.findViewById(R.id.textView20);
         mylist = new ArrayList<String>();
         priclist = new ArrayList<String>();
-        quantity = 1;
+        quantity = "1";
 
         placeorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 JSONObject jsonObject = new JSONObject();
                 try {
-
+                    SharedPreferences prefs = getContext().getSharedPreferences(Constants.PREFS_FILE, MODE_PRIVATE);
+                    momsId = prefs.getString("momId", "No name defined");
+                    SharedPreferences prefss = getContext().getSharedPreferences(Constants.PREFS_FILE, MODE_PRIVATE);
+                    kidsId = prefss.getString("kidsId", "No name defined");
                     jsonObject.put("momId", momsId);
                     jsonObject.put("kidId",kidsId);
+                  Toast.makeText(getContext(),kidsId,Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -102,7 +104,7 @@ public class cartFragment extends DialogFragment  {
 
                 JSONObject jsonObjects = new JSONObject();
                 try {
-                    jsonObjects.put("momId",momsId);
+                    jsonObjects.put("momId",pri);
                     jsonObjects.put("kidID",kidsId );
                     jsonObjects.put("deliveryTime",timefix.getText().toString() );
                     jsonObjects.put("deliveryDate",datefix.getText().toString() );
@@ -110,52 +112,64 @@ public class cartFragment extends DialogFragment  {
                     e.printStackTrace();
                 }
 
-                JSONObject jsonObjectss = new JSONObject();
+                JSONArray iqArray = new JSONArray();
+                //JSONObject jsonObjectss = new JSONObject();
                 try {
                     JSONArray jsArray = new JSONArray(mylist);
-                    jsonObjectss.put("itemID",jsArray);
-                    jsonObjectss.put("qty",quantity );
+                    iqArray = new JSONArray();
+                    int ctrl = 0;
+                    while(ctrl<jsArray.length()){
+                        String temp = "{\"itemID\":\"" + jsArray.getString(ctrl).toString() +
+                                "\", \"quantity\":\"" + 1 + "\"}";
+                        iqArray.put(new JSONObject(temp));
+                        ctrl++;
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                JSONObject jsonObjectsss = new JSONObject();
-                try {
-                    jsonObjectsss.put("choices",arrays);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
                 JSONObject jsonObjectfin = new JSONObject();
                 try {
                     jsonObjectfin.put("orderPart",jsonObjects);
-                    jsonObjectfin.put("orderDetailsPart",jsonObjectss);
-                    jsonObjectfin.put("orderItemDetailsPart",jsonObjectsss);
-                    Toast.makeText(getContext(),jsonObjectfin.toString(),Toast.LENGTH_LONG).show();
+                    jsonObjectfin.put("orderDetailsPart",iqArray);
+                    jsonObjectfin.put("orderItemDetailsPart",arrays);
+                    Toast.makeText(getContext(),"\nSENDING THE FOLLOWING DATA\n"+jsonObjectfin.toString(),Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                postData = jsonObject.toString();
+                postData = jsonObjectfin.toString();
                 url = Constants.ordercreatUrl;
 
                 try {
-
                     resulte = new BackgroundWorker(getContext()).execute(postData, url).get();
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    FriendsFragment llf = new FriendsFragment();
-                    ft.replace(R.id.hello, llf);
-                    ft.commit();
-
-
-                Intent i = new Intent(getContext(),FriendsFragment.class);
-                    startActivity(i);
-
-
-
-
+                    Toast.makeText(getContext(), "\nRESULT\n" + resulte.toString(), Toast.LENGTH_SHORT).show();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
+                }
+
+
+                JSONObject jsonObjectcartdel = new JSONObject();
+                try {
+                    SharedPreferences prefss = getContext().getSharedPreferences(Constants.PREFS_FILE, MODE_PRIVATE);
+                    kidsId = prefss.getString("kidsId", "No name defined");
+                    jsonObjectcartdel.put("kidIds",kidsId);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                postData = jsonObjectcartdel.toString();
+                url = Constants.cartdeleteurl;
+
+                try {
+                    resultes = new BackgroundWorker(getContext()).execute(postData, url).get();
+                    Toast.makeText(getContext(), "\nRESULT\n" + resultes.toString(), Toast.LENGTH_SHORT).show();
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
 
@@ -166,7 +180,7 @@ public class cartFragment extends DialogFragment  {
     @Override
     public void onClick(View view) {
        // Toast.makeText(getContext(),"kefdf",Toast.LENGTH_LONG).show();
-
+                final String selectedSecond = "00";
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -174,7 +188,7 @@ public class cartFragment extends DialogFragment  {
                 mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        timefix.setText(selectedHour + ":" + selectedMinute);
+                        timefix.setText(selectedHour + ":" + selectedMinute + ":" + selectedSecond);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -220,7 +234,7 @@ public class cartFragment extends DialogFragment  {
            momsId = prefs.getString("momId", "No name defined");
             SharedPreferences prefss = getContext().getSharedPreferences(Constants.PREFS_FILE, MODE_PRIVATE);
          kidsId = prefss.getString("kidsId", "No name defined");
-
+            Toast.makeText(getContext(),kidsId,Toast.LENGTH_LONG).show();
 
             jsonObject.put("momId", momsId);
             jsonObject.put("kidId",kidsId);

@@ -22,7 +22,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import static java.security.AccessController.getContext;
@@ -34,9 +36,12 @@ import static java.security.AccessController.getContext;
 public class itemDecri extends AppCompatActivity {
     ListView ingr;
     Button alterna, addtocart, addtoWish;
-    ArrayList<String> mylist,list,listnam,lisnum;
-    String postData,url,sam,fudId,message;
+    ArrayList<String> mylist,list,listnam,lisnum,alternset,setid;
+    String postData,url,sam,message,fudId;
+    Map<String,String> myMap;
+
     String[] ingsid, ingid;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,9 @@ public class itemDecri extends AppCompatActivity {
         list = new ArrayList<String>();
         listnam = new ArrayList<String>();
         lisnum = new ArrayList<String>();
+       alternset = new ArrayList<String>();
+        myMap = new HashMap<String,String>();
+        setid = new ArrayList<>();
     //getting bundle
         final String itmId = getIntent().getExtras().getString("itmid");
         final String resu = getIntent().getExtras().getString("value");
@@ -129,6 +137,7 @@ public class itemDecri extends AppCompatActivity {
                     if( j==k) {
                         fudId= listnam.get(k).toString();
                         Toast.makeText(itemDecri.this,fudId,Toast.LENGTH_LONG).show();
+
                     }}
 
                 JSONObject jsonObject = new JSONObject();
@@ -219,13 +228,16 @@ public class itemDecri extends AppCompatActivity {
 
                 SharedPreferences prefs = getSharedPreferences(Constants.PREFS_FILE, MODE_PRIVATE);
                 String momsId = prefs.getString("momId", "No name defined");
+                Toast.makeText(itemDecri.this, momsId.toString(), Toast.LENGTH_SHORT).show();
                 JSONObject jsonObject = new JSONObject();
                 try {
+                    JSONArray jsingarr = new JSONArray(setid);
+                    JSONArray jsaltingarr = new JSONArray(alternset);
                     jsonObject.put("momID",momsId );
                     jsonObject.put("kidID",kidsId);
                     jsonObject.put("itemID",itmId);
-                    jsonObject.put("ingID",fudId);
-                    jsonObject.put("chosenIng",message);
+                    jsonObject.put("ingID",jsingarr);
+                    jsonObject.put("chosenIng",jsaltingarr);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -235,14 +247,13 @@ public class itemDecri extends AppCompatActivity {
                 try {
 
                     String result = new BackgroundWorker(itemDecri.this).execute(postData, url).get();
-                    cartFragment card = new cartFragment();
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    fragmentTransaction.replace(R.id.linearframe, card);
-
-
-                    fragmentTransaction.commit();
+                    Toast.makeText(itemDecri.this, result.toString(), Toast.LENGTH_SHORT).show();
+//                    cartFragment card = new cartFragment();
+//                    FragmentManager fragmentManager = getSupportFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//                    fragmentTransaction.replace(R.id.linearframe, card);
+//                    fragmentTransaction.commit();
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -262,6 +273,19 @@ public class itemDecri extends AppCompatActivity {
         {
             message=data.getStringExtra("MESSAGE");
             Toast.makeText(itemDecri.this,message, Toast.LENGTH_SHORT).show();
+
+            myMap.put(fudId,message);
+                setid.add(fudId);
+              alternset.add(message);
+               // listnam.add(row.getString("id"));
+                Toast.makeText(itemDecri.this,"added", Toast.LENGTH_SHORT).show();
+            for (int s=0;s<alternset.size();s++){
+
+                    String ko= alternset.get(s).toString();
+                String kos= setid.get(s).toString();
+                    Toast.makeText(itemDecri.this,ko.toString()+kos.toString(),Toast.LENGTH_LONG).show();
+
+                }
 
         }
     }

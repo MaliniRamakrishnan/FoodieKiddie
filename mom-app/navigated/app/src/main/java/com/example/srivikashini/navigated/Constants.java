@@ -29,5 +29,6 @@ public class Constants {
     static final String ordercreatUrl = "https://foodiekiddiee.000webhostapp.com/orders/order-creation/orderitemdetailscreation.php";
     static final String orderfetchUrl = "https://foodiekiddiee.000webhostapp.com/kid/fetchorders.php";
     static final String ordernamefetchUrl = "https://foodiekiddiee.000webhostapp.com/kid/fetchname.php";
+    static final String cartdeleteurl = "https://foodiekiddiee.000webhostapp.com/kid/cartdel.php";
 
 }

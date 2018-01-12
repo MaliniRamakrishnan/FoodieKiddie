@@ -32,7 +32,7 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.login);
         edtemail = (EditText)findViewById(R.id.editText);
         edtpassword = (EditText)findViewById(R.id.editText2);
-      typeChosen = getIntent().getStringExtra("typel");
+        typeChosen = getIntent().getStringExtra("typel");
         checkBoxRememberMe = (CheckBox) findViewById(R.id.checkBox);
         if (!new PrefManager(this).isUserLogedOut()) {
             startHomeActivity();
@@ -144,7 +144,6 @@ public class login extends AppCompatActivity {
 
         edtemail.setError(null);
         edtpassword.setError(null);
-
         String email = edtemail.getText().toString();
         String password = edtpassword.getText().toString();
         SharedPreferences prefs = getSharedPreferences(Constants.PREFS_FILE, MODE_PRIVATE);
