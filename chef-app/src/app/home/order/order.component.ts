@@ -5,7 +5,6 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams} from '@angula
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/observable/of';
-import { DetailsDialogService } from './details-dialog.service';
 
 @Component({
   selector: 'order',
@@ -20,44 +19,40 @@ export class OrderComponent implements OnInit {
   ordersSubscription;
   all_orders; message;
   ordersAdded: boolean;
-  info: boolean; all: boolean; accepted: boolean; allc: boolean;
-  ordersURL = 'https://foodiekiddiee.000webhostapp.com/chef/order-fetcher.php';
-  infoURL = 'https://foodiekiddiee.000webhostapp.com/chef/order-info.php';
-  
-  oi = [];
-  tiles = [];
+  info: boolean; all: boolean;
+  ordersURL = 'https://foodiekiddiee.000webhostapp.com/orders/direct-to-chefs/c-tasklist.php';
+  infoURL = 'https://foodiekiddiee.000webhostapp.com/orders/direct-to-chefs/c-taskinfo.php';
 
-  constructor(private router: Router, private authService: AuthService, private http: Http, private accepthttp: Http/*, private detDiaSer: DetailsDialogService*/) {
+  tiles = [];
+  infoData = [];
+  ingData;
+  update_odID;
+
+  constructor(private router: Router, private authService: AuthService, private http: Http, private infohttp: Http, private ingHttp: Http) {
     this.headers = new Headers();
     this.headers.append("Content-Type", "application/x-www-form-urlencoded");
-    this.info = false; this.allc = false;
-    this.accepted = false; this.all = true;
+    this.info = false; this.all = true;
     this.getOrders();
     this.ordersSubscription = Observable.interval(1000 * 60 * 5).subscribe(x => {
-      //Even after 9am, if some order isn't accepted by any chef,
-      //UI of 'all orders under chef's expertise' has to be updated.
-      let yetToAssignChef: boolean = false;
-      for(let order in this.all_orders["data"]){
-        if(this.all_orders["data"][order]["chefID"]==null){
-          yetToAssignChef=true;
-          break;
-        }
-      }
+      //Even after 9am, if some order is newly assigned by head chef,
+      //the list has to be updated.
       let tempData = this.all_orders["data"];
       var d = new Date();
-      if(d.getHours()<9||yetToAssignChef) {
+      if(d.getHours()<10) {
         this.getOrders();
         if(this.all_orders["data"].length>tempData.length) this.ordersAdded = true;
         else this.ordersAdded = false;
       }
     });
-  }
-  
-  options = [
-    {value: 'all', viewValue: 'All'},
-    {value: 'chef-cuisine', viewValue: 'All ' + this.authService.expertise},
-    {value: 'accepted', viewValue: 'Accepted'}
-  ];
+    let ingURL = 'https://foodiekiddiee.000webhostapp.com/stock/ingredients.php';
+    this.ingHttp.get(ingURL).subscribe(
+      data => {
+        console.log(data.json());
+        this.ingData = data.json();
+      },
+      err => { console.log('Failed...'); }
+    );
+    }
 
   ngOnInit() {
   }
@@ -85,138 +80,68 @@ export class OrderComponent implements OnInit {
     if(mm<10) mms = '0' + mm;
     else mms = mm.toString();
     datestr = yyyy + '-' + mms + '-' + dds;
-    let body = {"date":datestr,"kitchenID":this.authService.kitchenID};
+    let body = {
+      "date": datestr,
+      "kitchenID": this.authService.kitchenID,
+      "chefID": this.authService.userID
+    };
     this.http.post(this.ordersURL, body,{ headers: this.headers}).subscribe(
         result => this.all_orders = result.json(),
         () => console.log("Failed..."),
         () => { 
           console.log(this.all_orders);
-          this.optionChooser();
+          if(this.all_orders["data"]=="Zero results") { this.message = "None to display."; }
+          else { this.tiles = this.all_orders["data"]; }
         });
   }
 
   orderInfo(tile){
-    this.oi["items"] = [];
-    this.oi["orderID"] = tile["orderID"];
-    this.oi["deliveryTime"] = tile["deliveryTime"];
-    for(let row in this.all_orders["data"]){
-      if(this.all_orders["data"][row]["orderID"]==tile["orderID"]){
-        this.oi["items"].push(this.all_orders["data"][row]);
-      }
-    }
-    this.all = false; this.accepted = false; this.allc = false; this.info = true;
-  }
-
-  orderComposer(){
-    let orders = []; let oldRow = false;
-    for(let row in this.all_orders["data"]){
-      let temp = {};
-      temp["orderID"] = this.all_orders["data"][row]["orderID"];
-      temp["deliveryTime"] = this.all_orders["data"][row]["deliveryTime"];
-      for(let x in orders){
-        if(orders[x]["orderID"]==temp["orderID"]) { oldRow = true; break; }
-      }
-      if(!oldRow) orders.push(temp);
-      oldRow = false;
-    }
-    this.tiles = orders;
-    if(this.tiles.length == 0) this.message = "None to display. Kindly refresh.";
-    else this.message = null;
-    if(!this.info) this.all = true;
-    this.accepted = false; this.allc = false;
-  }
-
-  acceptedOrders(){
-    this.tiles = [];
-    for(let row in this.all_orders["data"]){
-      if(this.all_orders["data"][row]["chefID"]==this.authService.userID){
-        let temp = {};
-        temp["orderID"] = this.all_orders["data"][row]["orderID"];
-        temp["deliveryTime"] = this.all_orders["data"][row]["deliveryTime"];
-        temp["item"] = this.all_orders["data"][row]["name"];
-        temp["qty"] = this.all_orders["data"][row]["qty"];
-        temp["itemID"] = this.all_orders["data"][row]["id"];
-        this.tiles.push(temp);
-      }
-    }
-    console.log(this.tiles);
-    if(this.tiles.length == 0) this.message = "None to display. Kindly refresh.";
-    else this.message = null;
-    this.info = false; this.all = false;
-    this.allc = false; this.accepted = true;
-  }
-
-  cuisineOrders(){
-    this.tiles = [];
-    for(let row in this.all_orders["data"]){
-      let cc = this.all_orders["data"][row]["cuisine"] + " " + this.all_orders["data"][row]["category"];
-      if((cc==this.authService.expertise) && 
-          (this.all_orders["data"][row]["chefID"]==null)){
-        let temp = {};
-        temp["orderID"] = this.all_orders["data"][row]["orderID"];
-        temp["deliveryTime"] = this.all_orders["data"][row]["deliveryTime"];
-        temp["item"] = this.all_orders["data"][row]["name"];
-        temp["qty"] = this.all_orders["data"][row]["qty"];
-        temp["itemID"] = this.all_orders["data"][row]["id"];
-        this.tiles.push(temp);
-      }
-    }
-    console.log(this.tiles);
-    if(this.tiles.length == 0) this.message = "None to display. Kindly refresh.";
-    else this.message = null;
-    this.info = false; this.all = false;
-    this.accepted = false; this.allc = true;
-  }
-
-  acceptOrder(tile){
-    let url = "https://foodiekiddiee.000webhostapp.com/orders/direct-to-chefs/accept-orders.php";
-    let body = {
-      "orderID":tile["orderID"],
-      "itemID":tile["itemID"],
-      "chefID":this.authService.userID
-    };
-    let acceptheaders = new Headers();
-    let acceptRes;
-    acceptheaders.append("Content-Type", "application/x-www-form-urlencoded");
-    this.accepthttp.post(url, body,{ headers: acceptheaders}).subscribe(
-        result => acceptRes = result.json(),
-        () => console.log("Failed..."),
-        () => {
-          console.log(acceptRes);
-          if(acceptRes["data"]=="success"){
-            this.getOrders();
+    let taskdetails;
+    let infoheaders = new Headers();
+    infoheaders.append("Content-Type", "application/x-www-form-urlencoded");
+    let body = { "odID": tile.odID };
+    this.infohttp.post(this.infoURL, body,{ headers: infoheaders}).subscribe(
+      result => taskdetails = result.json()["data"],
+      () => console.log("Failed..."),
+      () => { 
+        console.log(taskdetails);
+        this.infoData = [];
+        for(let row in taskdetails){
+          let temp = [];
+          for(let ing in this.ingData){
+            if(this.ingData[ing]['id']==taskdetails[row]['ingID']){
+              temp['ing'] = this.ingData[ing]['name'];
+            }
+            else if(this.ingData[ing]['id']==taskdetails[row]['chosenIngID']){
+              temp['chosening'] = this.ingData[ing]['name'];
+            }
+            else {}
           }
-        });
-  }
-
-  viewDetails(tile){
-    //this.detDiaSer.setDetails(tile.id);
-  }
-
-  optionChooser(){
-    switch(this.selectedValue){
-      case 'accepted':
-        this.acceptedOrders();
-        break;
-      case 'chef-cuisine':
-        this.cuisineOrders();
-        break;
-      default:
-        if(!this.info) this.orderComposer();
-      }
+          if(taskdetails[row]['ingQty']==""){ temp['ingQty'] = "Chef's Choice"; }
+          else { temp['ingQty'] = taskdetails[row]['ingQty']; }
+          temp['odID'] = taskdetails[row]['odID'];
+          this.infoData.push(temp);
+        }
+        console.log(this.infoData);
+        this.update_odID = tile.odID;
+        this.all = false; this.info = true;
+      });
     }
-}
 
-@Component({
-  selector: 'details-dialog',
-  templateUrl: 'details-dialog.html',
-  styleUrls: ['details-dialog.css']
-})
-
-export class DetailsDialogComponent{
-
-  id:string;
-
-  constructor(public dialogRef: MdDialogRef<DetailsDialogComponent>) {}
-
+    updateStatus(){
+      let status;
+      let statusURL = 'https://foodiekiddiee.000webhostapp.com/orders/direct-to-chefs/c-updatestatus.php';
+      let headers = new Headers();
+      headers.append("Content-Type", "application/x-www-form-urlencoded");
+      let body = { "odID": this.update_odID, "chefID": this.authService.userID };
+      this.infohttp.post(statusURL, body,{ headers: headers}).subscribe(
+        result => status = result,
+        () => console.log("Failed..."),
+        () => { 
+          console.log(status);
+          if(status.json()["data"]=="updated")
+            this.all = true; this.info = false;
+        }
+        );
+    }
 }

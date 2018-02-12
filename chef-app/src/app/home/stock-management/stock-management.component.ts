@@ -107,7 +107,7 @@ export class StockManagementComponent implements OnInit {
 
   refill(ingID: string){
     let refillURL = 'https://foodiekiddiee.000webhostapp.com/stock/requestrefill.php';
-    let body = {"kitchenID": this.authService.kitchenID,"ingID":ingID};
+    let body = {"kitchenID": this.authService.kitchenID,"ingID":ingID,"chefID":this.authService.userID};
     let reHead: Headers = new Headers(); let data;
     reHead.append("Content-Type", "application/x-www-form-urlencoded");
     this.refillHttp.post(refillURL, body,{ headers: reHead}).subscribe(

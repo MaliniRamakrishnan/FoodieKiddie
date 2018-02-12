@@ -20,16 +20,16 @@ export class AuthService {
   login(email:string,password:string){
   	let body = {"email": email, "password": password, "role": "chef"};
     this.http.post(this.loginURL, body,{ headers: this.headers}).subscribe(
-        result => this.data = result,
+        result => this.data = result.json(),
     	  () => console.log("Failed..."),
     	  () => { 
-          // console.log(this.data.json()["data"]); 
-          if(this.data.json()["data"]=="failed"){
+          console.log(this.data["data"]); 
+          if(this.data["data"]=="failed"){
             let snackBarRef = this.snackBar.open('Invalid Credentials',' Try Again',
               { duration: 3000 });
             }
           else {
-            this.userID = this.data.json()["data"];
+            this.userID = this.data["data"];
             this.fetchChefDetails();
           }
         }
@@ -45,9 +45,8 @@ export class AuthService {
       result=> data = result.json(),
       ()=> console.log("Failed..."),
       ()=> {
-        // console.log(data["0"]["kitchenID"] + data["0"]["expertiseCuisine"] + data["0"]["expertiseCategory"]);
         this.kitchenID=data["0"]["kitchenID"];
-        this.expertise=data["0"]["expertiseCuisine"]+" "+data["0"]["expertiseCategory"];
+        this.expertise=data["0"]["expertise"];
         this.router.navigate(['/home']);
       }
     );

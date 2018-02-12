@@ -22,35 +22,18 @@
 	margin: 0 4px;
 	cursor: pointer;
 }
-#backButton{
+.updateButton, #backButton{
 	background-color: #df1944;
 	color:#ffffff;
 	width: 50%;
 	display: block;
 	font-size: large;
 	margin: auto;
+	margin-top: 18px;
 	font-family: 'Roboto', sans-serif;
 }
-.viewSelector{
-	width: 100%;
-	padding-bottom: 18px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(232, 229, 229);
-    border-bottom-width: 1px;
-}
-/deep/.mat-select{
-	display: block !important;
-    margin: auto;
-    width: 50%;
-}
-/deep/.mat-select-arrow, /deep/.mat-select-disabled /deep/.mat-select-value, /deep/.mat-select-underline, /deep/.mat-select-trigger{
-	color: #FFC107 !important;
-}
-/deep/.mat-select-underline{
-	background-color: #FF9800 !important;
-}
-/deep/.mat-select-trigger{
-	color: #FFC107;
+.updateButton{
+	background-color: #1a751d;
 }
 /deep/.mat-primary, /deep/.mat-option.mat-selected {
     color: #df1944 !important;
@@ -60,9 +43,18 @@
 	height: auto;
 	margin: auto;
 }
+.orderInfoTable{
+	width: 100%;
+    margin: 28px auto;
+    text-align: center;
+}
+.orderInfoTable th{
+	text-align: center;
+}
 .order-info /deep/.mat-card{
 	background: antiquewhite;
 	padding: 16px 16px; 
+	height: ;
 	font-family: 'Roboto', sans-serif;
 }
 .all-orders md-card-subtitle{
@@ -75,29 +67,15 @@
 }
 .all-orders .order-card{
 	cursor: pointer;
+	height: 180px;
 }
 .fill-remaining-space{
 	flex: 1 1 auto;
 }
-.acceptButton{
-	margin: auto !important;
-    background: #FFC107;
-    color: white;
-    display: block;
-    font-weight: 600;
+.all-orders .order-card.DONE{
+	background-color: #e6e0e0;
+	cursor: auto;
 }
-.adt, .atq, .atn, .aoid{
-	display: block;
-	margin: auto;
-}
-.atn{
-	font-weight: 600;
-	color: #d61616;
-}
-.atq{
-	font-weight: 600;
-	color: #28772b;
-}
-.allc-orders /deep/.mat-card-title{
-	margin-bottom: 4px !important;
+.doneLegend{
+	background-color: #e6e0e0;
 }
