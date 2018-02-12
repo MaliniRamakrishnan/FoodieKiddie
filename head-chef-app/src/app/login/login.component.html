@@ -4,16 +4,16 @@
 	<div class="mainDivision">
 		<form #loginForm="ngForm" (ngSubmit)="checkUser(username.value,password.value)">
 		<div class="loginFields form-group">
-			<md-input-container floatPlaceholder="never">
-				<input mdInput placeholder="Username" #username>
-			</md-input-container>
-			<md-input-container floatPlaceholder="never">
-				<input mdInput placeholder="Password" type="password" #password>
-			</md-input-container>
+			<mat-form-field floatPlaceholder="never">
+				<input matInput placeholder="Username" #username required>
+			</mat-form-field>
+			<mat-form-field floatPlaceholder="never">
+				<input matInput placeholder="Password" type="password" #password required>
+			</mat-form-field>
 			<section>
-				<button md-button type="submit" id="continueButton">CONTINUE</button>
+				<button mat-button type="submit" id="continueButton">CONTINUE</button>
 			</section>
-			<!-- {{hint}} -->
+			{{error}}
 		</div>
 		</form>
 	</div>

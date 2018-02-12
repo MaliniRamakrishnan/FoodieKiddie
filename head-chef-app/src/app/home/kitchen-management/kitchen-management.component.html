@@ -1,7 +1,80 @@
 <div class="wrapper">
 	<div class="pinkDivision">
+		<mat-hint>{{hint}}</mat-hint>
 	</div>
 	<div class="mainDivision">
-		Kitchen Management
+		<mat-toolbar>
+			<span>Kitchen Management</span>
+    		<span class="spacer"></span>
+    		<img class="iconStyler" alt="Home" src="../../../assets/icon_house.png" (click)="goto('kitchen')">
+    		<img class="iconStyler" alt="People" src="../../../assets/icon_people-management.png" (click)="goto('people')">
+    		<img class="iconStyler" alt="Stock" src="../../../assets/icon_stock.png" (click)="goto('stock')">
+    		<img class="iconStyler" alt="User" src="../../../assets/icon_user.png" (click)="goto('profile')">
+		</mat-toolbar>
+		<mat-tab-group (selectedTabChange)="onTabChange($event)">
+			<mat-tab label="ORDERS ASSIGNMENT" class="ordersList">
+				<mat-table [dataSource]="orderSource" *ngIf="table1Ready">
+					<ng-container matColumnDef="orderID">
+	          <mat-header-cell *matHeaderCellDef> ORDER ID </mat-header-cell>
+	          <mat-cell *matCellDef="let row"> {{row.orderID}} </mat-cell>
+	        </ng-container>
+					<ng-container matColumnDef="name">
+	          <mat-header-cell *matHeaderCellDef> ITEM </mat-header-cell>
+	          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+	        </ng-container>
+					<ng-container matColumnDef="cuisine">
+	          <mat-header-cell *matHeaderCellDef> CUISINE </mat-header-cell>
+	          <mat-cell *matCellDef="let row"> {{row.cuisine}} </mat-cell>
+	        </ng-container>
+					<ng-container matColumnDef="chefID">
+	          <mat-header-cell *matHeaderCellDef> CHEF </mat-header-cell>
+	          <mat-cell *matCellDef="let row">
+	          	<mat-select placeholder="Assign Chef">
+	          		<ng-container *ngFor="let chef of chefs">
+	          			<mat-option *ngIf="chef.expertise==row.cuisine" [value]="chef.id" (click)="assignChef(row.odID,chef.id,row.orderID,row.name)">
+                  			{{chef.id}}
+                		</mat-option>
+                </ng-container>
+	          	</mat-select>
+	          </mat-cell>
+	        </ng-container>
+	        <mat-header-row *matHeaderRowDef="assignDisplayedColumns">
+	        </mat-header-row>
+	        <mat-row *matRowDef="let row; columns: assignDisplayedColumns;" [ngClass]="{'ROWHIDE':row.chefID}" class="rowStyler">
+	        </mat-row>
+				</mat-table>
+			</mat-tab>
+			<mat-tab label="CHEF TASKS" class="ordersList">
+				<mat-table [dataSource]="chefTaskSource" *ngIf="table2Ready">
+					<ng-container matColumnDef="orderID">
+	          <mat-header-cell *matHeaderCellDef> ORDER ID </mat-header-cell>
+	          <mat-cell *matCellDef="let row"> {{row.orderID}} </mat-cell>
+	        </ng-container>
+					<ng-container matColumnDef="name">
+	          <mat-header-cell *matHeaderCellDef> ITEM </mat-header-cell>
+	          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+	        </ng-container>
+					<ng-container matColumnDef="cuisine">
+	          <mat-header-cell *matHeaderCellDef> CUISINE </mat-header-cell>
+	          <mat-cell *matCellDef="let row"> {{row.cuisine}} </mat-cell>
+	        </ng-container>
+					<ng-container matColumnDef="chefID">
+	          <mat-header-cell *matHeaderCellDef> CHEF </mat-header-cell>
+	          <mat-cell *matCellDef="let row"> {{row.chefID}} </mat-cell>
+	        </ng-container>
+	        <ng-container matColumnDef="preparation_status">
+	          <mat-header-cell *matHeaderCellDef> PREPARATION STATUS </mat-header-cell>
+	          <mat-cell *matCellDef="let row">
+	          	<span *ngIf="row.preparation_status==1"> DONE </span>
+	          	<span *ngIf="row.preparation_status==0"> TO BE COOKED </span> 
+	          </mat-cell>
+	        </ng-container>
+	        <mat-header-row *matHeaderRowDef="displayedColumns">
+	        </mat-header-row>
+	        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'ROWHIDE':!row.chefID}" class="rowStyler">
+	        </mat-row>
+				</mat-table>
+			</mat-tab>
+		</mat-tab-group>
 	</div>
 </div>

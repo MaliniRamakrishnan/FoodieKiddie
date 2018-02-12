@@ -1,0 +1,41 @@
+#changeButton,#cancelButton{
+	background-color: #df1944;
+	color:#ffffff;
+	width: 100%;
+	font-family: 'Roboto', sans-serif;
+	margin-top: 10px;
+}
+.changeFields/deep/.mat-input-underline{
+	display: none;
+}
+.changeFields/deep/.mat-focused /deep/.mat-form-field-placeholder{
+	display: none;
+}
+.changeFields/deep/.mat-input-infix{
+	border: 2px solid #df1944;
+	text-align: center;
+}
+.changeFields/deep/.mat-input-element{
+	text-align: center;
+}
+.wrapper{
+	display: flex;
+}
+.pinkDivision{
+	background-color: #df1944;
+	height:100vh;
+	width:35vw;
+}
+.toolbarDivision{
+	width: 100%;
+}
+.mainDivision{
+	height: 100%;
+	width: 100%;
+	align-self: center;
+}
+.changeFields{
+	display: grid;
+	width: fit-content;
+	margin: auto;
+}

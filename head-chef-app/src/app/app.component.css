@@ -1,0 +1,9 @@
+/deep/.simple-notification.alert{
+	background: #009688 !important;
+}
+/deep/.simple-notification /deep/.sn-title{
+	color: #7fffd4;
+}
+/deep/.simple-notification /deep/.icon{
+	display: none;
+}

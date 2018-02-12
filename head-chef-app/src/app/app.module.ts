@@ -3,19 +3,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-
+import { SimpleNotificationsModule } from 'angular2-notifications';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 import 'hammerjs';
 import {
-  MdInputModule,
-  MdButtonModule,
-  MdIconModule,
-  MdToolbarModule,
-  MdSnackBarModule,
-  MdDialogModule,
-  MdTabsModule,
-  MdTableModule
+  MatInputModule,
+  MatButtonModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatSnackBarModule,
+  MatDialogModule,
+  MatTabsModule,
+  MatTableModule,
+  MatSelectModule,
+  MatListModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -52,15 +53,18 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
+    SimpleNotificationsModule.forRoot(),
     HomeModule,
-    MdInputModule,
-    MdButtonModule,
-    MdIconModule,
-    MdToolbarModule,
-    MdSnackBarModule,
-    MdDialogModule,
-    MdTabsModule,
-    MdTableModule
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatTableModule,
+    MatSelectModule,
+    MatListModule
   ],
   providers: [AuthGuard, AuthService, DeleteDialogService],
   bootstrap: [AppComponent]

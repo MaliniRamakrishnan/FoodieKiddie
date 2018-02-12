@@ -12,6 +12,8 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams} from '@angula
 
 export class LoginComponent implements OnInit {
 
+  error;
+
   constructor(public authService:AuthService, private router: Router,private http: Http) {
     this.authService.logout();
   }
@@ -19,8 +21,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   checkUser(username:string, password:string){
-    username="gautham@gmail.com";password="headchef-gautham";
-    this.authService.login(username,password);
+    //username="gautham@gmail.com";password="headchef-gautham";
+    this.error = "";
+    if(username&&password) this.authService.login(username,password);
+    else this.error = "Enter all credentials.";
   }
 
 }

@@ -7,15 +7,17 @@ import { HomeComponent } from './home.component';
 import { StockManagementComponent } from './stock-management/stock-management.component';
 import { PeopleManagementComponent } from './people-management/people-management.component';
 import { KitchenManagementComponent } from './kitchen-management/kitchen-management.component';
+import { HcProfileComponent } from './hc-profile/hc-profile.component';
 
 const homeRoutes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
     children: [
-       { path: 'kitchen', component: KitchenManagementComponent, canActivate: [AuthGuard] },
-       { path: 'people', component: PeopleManagementComponent, canActivate: [AuthGuard] },
-       { path: 'stock', component: StockManagementComponent, canActivate: [AuthGuard] }
+      { path: 'kitchen', component: KitchenManagementComponent, canActivate: [AuthGuard] },
+      { path: 'people', component: PeopleManagementComponent, canActivate: [AuthGuard] },
+      { path: 'stock', component: StockManagementComponent, canActivate: [AuthGuard] },
+      { path: 'profile', component: HcProfileComponent, canActivate: [AuthGuard] }
     ]
   }
 ];

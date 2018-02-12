@@ -9,19 +9,23 @@ import { StockManagementComponent } from './stock-management/stock-management.co
 import { PeopleManagementComponent } from './people-management/people-management.component';
 import { KitchenManagementComponent } from './kitchen-management/kitchen-management.component';
 import { DeleteDialogComponent } from './people-management/people-management.component';
+import { HcProfileComponent } from './hc-profile/hc-profile.component';
 
 import 'hammerjs';
 import {
-  MaterialModule,
-  MdInputModule,
-  MdButtonModule,
-  MdIconModule,
-  MdToolbarModule,
-  MdSnackBarModule,
-  MdDialogModule,
-  MdTabsModule,
-  MdTableModule
+  MatInputModule,
+  MatButtonModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatSnackBarModule,
+  MatDialogModule,
+  MatTabsModule,
+  MatTableModule,
+  MatSelectModule,
+  MatListModule,
+  MatSlideToggleModule
 } from '@angular/material';
+
 
 @NgModule({
   imports: [
@@ -29,23 +33,26 @@ import {
     FormsModule,
     HomeRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    MdInputModule,
-    MdButtonModule,
-    MdIconModule,
-    MdToolbarModule,
-    MdSnackBarModule,
-    MdDialogModule,
-    MdTabsModule,
-    MdTableModule
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatTableModule,
+    MatSelectModule,
+    MatListModule,
+    MatSlideToggleModule
   ],
   declarations: [
     StockManagementComponent, 
     PeopleManagementComponent, 
     KitchenManagementComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    HcProfileComponent
   ],
   entryComponents: [ DeleteDialogComponent ]
 })
 
-export class HomeModule {}
+export class HomeModule{}

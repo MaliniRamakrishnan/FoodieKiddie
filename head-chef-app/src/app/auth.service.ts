@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class AuthService {
@@ -9,7 +9,7 @@ export class AuthService {
   data: any; rawKitchenData: any;
   redirectURL: string;
   loginURL = 'https://foodiekiddiee.000webhostapp.com/login.php';
-  kitchenURL = 'https://foodiekiddiee.000webhostapp.com/kitchen_details.php';
+  kitchenURL = 'https://foodiekiddiee.000webhostapp.com/headchef/kitchen_details.php';
   headers: Headers; detailsHeaders: Headers;
 
   userID; email; 
@@ -19,7 +19,7 @@ export class AuthService {
   locationState; locationCountry; locationPIN;
   latitude; longitude; locationID;
 
-  constructor(private http: Http, private httpReq: Http, private router: Router, public snackBar: MdSnackBar){
+  constructor(private http: Http, private httpReq: Http, private router: Router, public snackBar: MatSnackBar){
   	this.headers = new Headers();
     this.headers.append("Content-Type", "application/x-www-form-urlencoded");
   }
@@ -28,16 +28,16 @@ export class AuthService {
     this.email = email;
   	let body = {"email": email, "password": password, "role": "headchef"};
     this.http.post(this.loginURL, body,{ headers: this.headers}).subscribe(
-        result => this.data = result,
+        result => this.data = result.json(),
     	  () => console.log("Failed..."),
     	  () => { 
           console.log(this.data); 
-          if(this.data.json()=="failed"||this.data.json()==null){
+          if(this.data["data"]=="failed"||this.data["data"]==null){
             let snackBarRef = this.snackBar.open('Invalid Credentials',' Try Again',
               { duration: 3000 });
             }
           else { 
-            this.userID = this.data.json();
+            this.userID = this.data["data"];
             // console.log(this.userID);
             this.getAllDetails();
           }

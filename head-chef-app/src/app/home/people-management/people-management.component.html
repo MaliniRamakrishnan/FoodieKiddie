@@ -21,21 +21,22 @@
         </div>
 	</div>
 	<div class="mainDivision">
-		<md-toolbar>
+		<mat-toolbar>
 			<span>People Management</span>
     		<span class="spacer"></span>
-    		<img class="iconStyler" alt="Home" src="../../../assets/icon_house.png">
-    		<img class="iconStyler" alt="Stock" src="../../../assets/icon_store.png">
-    		<img class="iconStyler" alt="User" src="../../../assets/icon_user.png">
-		</md-toolbar>
-    <md-tab-group dynamicHeight="true">
-        <md-tab label="Chefs">
+    		<img class="iconStyler" alt="Home" src="../../../assets/icon_house.png" (click)="goto('kitchen')">
+    		<img class="iconStyler" alt="People" src="../../../assets/icon_people-management.png" (click)="goto('people')">
+    		<img class="iconStyler" alt="Stock" src="../../../assets/icon_stock.png" (click)="goto('stock')">
+        <img class="iconStyler" alt="Profile" src="../../../assets/icon_user.png" (click)="goto('profile')">
+		</mat-toolbar>
+    <mat-tab-group dynamicHeight="true">
+        <mat-tab label="Chefs">
             <div class="example-container mat-elevation-z8">
                 <div class="headerDabba">
                   <div class="filterStyler">
-                      <md-form-field floatPlaceholder="never">
-                          <input mdInput #cfilter placeholder="Filter by Name">
-                      </md-form-field>
+                      <mat-form-field floatPlaceholder="never">
+                          <input matInput #cfilter placeholder="Filter by Name">
+                      </mat-form-field>
                   </div>
                   <span class="spacer"></span>
                   <div class="addPpl">
@@ -43,156 +44,79 @@
                   </div>
                 </div>
                 <div *ngIf="caddFormFlag" class="addFormStyler">
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #name placeholder="Name">
-                  </md-input-container>
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #email placeholder="E-Mail">
-                  </md-input-container>
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #phone placeholder="Phone">
-                  </md-input-container>
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #expertise placeholder="Expertise">
-                  </md-input-container>
-                  <button md-button (click)="addChef(name.value, email.value, phone.value, expertise.value)" class="generateIDButton">GENERATE ID</button>
-                  <button md-button (click)="cancel('chef')" class="saveButton">CANCEL</button>
+                  <mat-form-field floatPlaceholder="never">
+                    <input matInput #name placeholder="Name">
+                  </mat-form-field>
+                  <mat-form-field floatPlaceholder="never">
+                    <input matInput #email placeholder="E-Mail">
+                  </mat-form-field>
+                  <mat-form-field floatPlaceholder="never">
+                    <input matInput #phone placeholder="Phone">
+                  </mat-form-field>
+                  <mat-form-field floatPlaceholder="never">
+                    <mat-select placeholder="Select Expertise" [(value)]="newChefExpertise">
+                      <mat-option *ngFor="let option of expertiseList" [value]="option.value">
+                      {{option.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button mat-button (click)="addChef(name.value, email.value, phone.value, newChefExpertise)" class="generateIDButton">GENERATE ID</button>
+                  <button mat-button (click)="cancel('chef')" class="saveButton">CANCEL</button>
                 </div>
                 <div class="editPpl" *ngIf="ceditFlag">
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #name placeholder="Name" [(ngModel)]="tc2">
-                  </md-input-container>
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #email placeholder="E-Mail" [(ngModel)]="tc3">
-                  </md-input-container>
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #phone placeholder="Phone" [(ngModel)]="tc4">
-                  </md-input-container>
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #expertise placeholder="Expertise" [(ngModel)]="tc5">
-                  </md-input-container>
-                  <button md-button (click)="editChef()" class="saveButton">SAVE CHANGES</button>
-                  <button md-button (click)="cancel('chef')" class="saveButton">CANCEL</button>
+                  <mat-form-field floatPlaceholder="never">
+                    <input matInput #name placeholder="Name" [(ngModel)]="tc2">
+                  </mat-form-field>
+                  <mat-form-field floatPlaceholder="never">
+                    <input matInput #email placeholder="E-Mail" [(ngModel)]="tc3">
+                  </mat-form-field>
+                  <mat-form-field floatPlaceholder="never">
+                    <input matInput #phone placeholder="Phone" [(ngModel)]="tc4">
+                  </mat-form-field>
+                  <mat-form-field floatPlaceholder="never">
+                    <input matInput #expertise placeholder="Expertise" [(ngModel)]="tc5">
+                  </mat-form-field>
+                  <button mat-button (click)="editChef()" class="saveButton">SAVE CHANGES</button>
+                  <button mat-button (click)="cancel('chef')" class="saveButton">CANCEL</button>
                 </div>
                 <div *ngIf="ctableReady">
-                  <md-table #ctable [dataSource]="cdataSource">
-                      <ng-container mdColumnDef="id">
-                          <md-header-cell *mdHeaderCellDef> CHEF ID </md-header-cell>
-                          <md-cell *mdCellDef="let row" #c1> {{row.id}} </md-cell>
+                  <mat-table [dataSource]="cdataSource">
+                      <ng-container matColumnDef="id">
+                          <mat-header-cell *matHeaderCellDef> CHEF ID </mat-header-cell>
+                          <mat-cell *matCellDef="let row" #c1> {{row.id}} </mat-cell>
                       </ng-container>
-                      <ng-container mdColumnDef="name">
-                        <md-header-cell *mdHeaderCellDef> NAME </md-header-cell>
-                        <md-cell *mdCellDef="let row" #c2> {{row.name}} </md-cell>
+                      <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> NAME </mat-header-cell>
+                        <mat-cell *matCellDef="let row" #c2> {{row.name}} </mat-cell>
                       </ng-container>
-                      <ng-container mdColumnDef="email">
-                        <md-header-cell *mdHeaderCellDef> EMAIL </md-header-cell>
-                        <md-cell *mdCellDef="let row" #c3> {{row.email}} </md-cell>
+                      <ng-container matColumnDef="email">
+                        <mat-header-cell *matHeaderCellDef> EMAIL </mat-header-cell>
+                        <mat-cell *matCellDef="let row" #c3> {{row.email}} </mat-cell>
                       </ng-container>
-                      <ng-container mdColumnDef="phone">
-                        <md-header-cell *mdHeaderCellDef> PHONE </md-header-cell>
-                        <md-cell *mdCellDef="let row" #c4> {{row.phone}} </md-cell>
+                      <ng-container matColumnDef="phone">
+                        <mat-header-cell *matHeaderCellDef> PHONE </mat-header-cell>
+                        <mat-cell *matCellDef="let row" #c4> {{row.phone}} </mat-cell>
                       </ng-container>
-                      <ng-container mdColumnDef="expertise">
-                        <md-header-cell *mdHeaderCellDef> EXPERTISE </md-header-cell>
-                        <md-cell *mdCellDef="let row" #c5> {{row.expertise}} </md-cell>
+                      <ng-container matColumnDef="expertise">
+                        <mat-header-cell *matHeaderCellDef> EXPERTISE </mat-header-cell>
+                        <mat-cell *matCellDef="let row" #c5> {{row.expertise}} </mat-cell>
                       </ng-container>
-                      <ng-container mdColumnDef="edit">
-                        <md-header-cell *mdHeaderCellDef> EDIT </md-header-cell>
-                        <md-cell *mdCellDef="let row" (click)="editChefSet(row.id,row.name,row.email,row.phone,row.expertise)"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_edit.png"></md-cell>
+                      <ng-container matColumnDef="edit">
+                        <mat-header-cell *matHeaderCellDef> EDIT </mat-header-cell>
+                        <mat-cell *matCellDef="let row" (click)="editChefSet(row.id,row.name,row.email,row.phone,row.expertise)"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_edit.png"></mat-cell>
                       </ng-container>                        
-                      <ng-container mdColumnDef="delete">
-                        <md-header-cell *mdHeaderCellDef> DELETE </md-header-cell>
-                        <md-cell *mdCellDef="let row" (click)="deletePerson(row.id,'chef')"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_house.png"></md-cell>
+                      <ng-container matColumnDef="delete">
+                        <mat-header-cell *matHeaderCellDef> DELETE </mat-header-cell>
+                        <mat-cell *matCellDef="let row" (click)="deletePerson(row.id,'chef')"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_house.png"></mat-cell>
                       </ng-container>
-                      <md-header-row *mdHeaderRowDef="cdisplayedColumns">
-                      </md-header-row>
-                      <md-row *mdRowDef="let row; columns: cdisplayedColumns;" [ngClass]="{'DELETED':(row.id===whichCDelete)}" class="rowStyler">
-                      </md-row>
-                  </md-table>
+                      <mat-header-row *matHeaderRowDef="cdisplayedColumns">
+                      </mat-header-row>
+                      <mat-row *matRowDef="let row; columns: cdisplayedColumns;" [ngClass]="{'DELETED':(row.id===whichCDelete)}" class="rowStyler">
+                      </mat-row>
+                  </mat-table>
                 </div>
             </div>
-        </md-tab>
-        <md-tab label="Delivery Guys">
-            <div class="example-container mat-elevation-z8">
-              <div class="headerDabba">
-                <div class="filterStyler">
-                  <md-form-field floatPlaceholder="never">
-                    <input mdInput #dgfilter placeholder="Filter by Name">
-                  </md-form-field>
-                </div>
-                <span class="spacer"></span>
-                <div class="addPpl">
-                  <img class="iconStyler plus" alt="User" src="../../../assets/icon_add.png" (click)="showAddForm('Delivery Guy')">
-                </div>
-              </div>
-              <div *ngIf="dgaddFormFlag" class="addFormStyler">
-                <md-input-container floatPlaceholder="never">
-                  <input mdInput #dgname placeholder="Name">
-                </md-input-container>
-                <md-input-container floatPlaceholder="never">
-                  <input mdInput #dgemail placeholder="E-Mail">
-                </md-input-container>
-                <md-input-container floatPlaceholder="never">
-                  <input mdInput #dgphone placeholder="Phone">
-                </md-input-container>
-                <button md-button (click)="addDG(dgname.value, dgemail.value, dgphone.value)" class="generateIDButton">GENERATE ID</button>
-                <button md-button (click)="cancel('dg')" class="saveButton">CANCEL</button>
-              </div>
-              <div class="editPpl" *ngIf="dgeditFlag">
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #name placeholder="Name" [(ngModel)]="tdg2">
-                  </md-input-container>
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #email placeholder="E-Mail" [(ngModel)]="tdg3">
-                  </md-input-container>
-                  <md-input-container floatPlaceholder="never">
-                    <input mdInput #phone placeholder="Phone" [(ngModel)]="tdg4">
-                  </md-input-container>
-                  <button md-button (click)="editDG()" class="saveButton">SAVE CHANGES</button>
-                  <button md-button (click)="cancel('dg')" class="saveButton">CANCEL</button>
-                </div>
-              <div *ngIf="dgtableReady">
-                <md-table #dgtable [dataSource]="dgdataSource">
-                    <ng-container mdColumnDef="id">
-                        <md-header-cell *mdHeaderCellDef>DELIVERY GUY ID </md-header-cell>
-                        <md-cell *mdCellDef="let row" #dg1> {{row.id}} </md-cell>
-                    </ng-container>
-                    <ng-container mdColumnDef="name">
-                      <md-header-cell *mdHeaderCellDef> NAME </md-header-cell>
-                      <md-cell *mdCellDef="let row" #dg2> {{row.name}} </md-cell>
-                    </ng-container>
-                    <ng-container mdColumnDef="email">
-                      <md-header-cell *mdHeaderCellDef> EMAIL </md-header-cell>
-                      <md-cell *mdCellDef="let row" #dg3> {{row.email}} </md-cell>
-                    </ng-container>
-                    <ng-container mdColumnDef="phone">
-                      <md-header-cell *mdHeaderCellDef> PHONE </md-header-cell>
-                      <md-cell *mdCellDef="let row" #dg4> {{row.phone}} </md-cell>
-                    </ng-container>
-                    <ng-container mdColumnDef="currentLocation">
-                      <md-header-cell *mdHeaderCellDef> CURRENT LOCATION </md-header-cell>
-                      <md-cell *mdCellDef="let row"> {{row.currentLocationLatitude}}, {{row.currentLocationLongitude}}</md-cell>
-                    </ng-container>
-                    <ng-container mdColumnDef="orderAssignment">
-                      <md-header-cell *mdHeaderCellDef> ORDERS ASSIGNED </md-header-cell>
-                      <md-cell *mdCellDef="let row"> {{row.orderAssignment}}</md-cell>
-                    </ng-container>
-                    <ng-container mdColumnDef="edit">
-                      <md-header-cell *mdHeaderCellDef> EDIT </md-header-cell>
-                      <md-cell *mdCellDef="let row" (click)="editDGSet(row.id,row.name,row.email,row.phone)"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_edit.png"></md-cell>
-                    </ng-container>                        
-                    <ng-container mdColumnDef="delete">
-                      <md-header-cell *mdHeaderCellDef> DELETE </md-header-cell>
-                      <md-cell *mdCellDef="let row" (click)="deletePerson(row.id,'dg')"><img class="iconStyler edde" alt="Home" src="../../../assets/icon_house.png"></md-cell>
-                    </ng-container>
-                    <md-header-row *mdHeaderRowDef="dgdisplayedColumns">
-                    </md-header-row>
-                    <md-row *mdRowDef="let row; columns: dgdisplayedColumns;" [ngClass]="{'DELETED':(row.id===whichDGDelete)}" class="rowStyler">
-                    </md-row>
-                </md-table>
-              </div>
-            </div>
-        </md-tab>
-    </md-tab-group>
+        </mat-tab>
+    </mat-tab-group>
 	</div>
 </div>

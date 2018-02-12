@@ -1,0 +1,26 @@
+<div class="wrapper">
+	<div class="pinkDivision">
+	</div>
+	<div class="mainDivision">
+		<form #changeForm="ngForm" (ngSubmit)="changePassword()">
+		<div class="changeFields form-group">
+			<mat-form-field floatPlaceholder="never">
+				<input matInput placeholder="Old Password" type="password" [(ngModel)]="oldP" name="oldp">
+			</mat-form-field>
+			<mat-form-field floatPlaceholder="never">
+				<input matInput placeholder="New Password" type="password" [(ngModel)]="newP" name="newp">
+			</mat-form-field>
+			<mat-form-field floatPlaceholder="never">
+				<input matInput placeholder="Confirm New Password" type="password" [(ngModel)]="cnewP" name="cnewp">
+			</mat-form-field>
+			<section>
+				<button mat-button type="submit" id="changeButton">CHANGE PASSWORD</button>
+			</section>
+			<section>
+				<button mat-button id="cancelButton" (click)="cancel()">CANCEL</button>
+			</section>
+			{{hint}}
+		</div>
+		</form>
+	</div>
+</div>

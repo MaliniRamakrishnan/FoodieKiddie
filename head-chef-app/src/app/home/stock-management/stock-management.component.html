@@ -1,7 +1,66 @@
 <div class="wrapper">
 	<div class="pinkDivision">
+    <mat-form-field>
+      <mat-select placeholder="Select View" [(ngModel)]="selectedValue">
+        <mat-option *ngFor="let option of options" [value]="option.value" (click)="optionChooser(option.value)">
+        {{option.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 	</div>
 	<div class="mainDivision">
-		Stock Management
+		<mat-toolbar>
+			<span>Stock Management</span>
+  		<span class="spacer"></span>
+  		<img class="iconStyler" alt="Home" src="../../../assets/icon_house.png" (click)="goto('kitchen')">
+  		<img class="iconStyler" alt="People" src="../../../assets/icon_people-management.png" (click)="goto('people')">
+  		<img class="iconStyler" alt="Stock" src="../../../assets/icon_stock.png" (click)="goto('stock')">
+      <img class="iconStyler" alt="Profile" src="../../../assets/icon_user.png" (click)="goto('profile')">
+		</mat-toolbar>
+    <div *ngIf="ingredientsTableReady&&all" class="example-header mat-elevation-z8">
+      <mat-table #ingtable [dataSource]="ingDataSource">
+        <ng-container matColumnDef="ingID">
+            <mat-header-cell *matHeaderCellDef> INGREDIENT ID </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> INGREDIENT NAME </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="isInStock">
+          <mat-header-cell *matHeaderCellDef> STOCK </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+          	<span *ngIf="checkStock(row.id)">Not in stock</span>
+            <span *ngIf="!checkStock(row.id)">In Stock</span>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="ingDisplayedColumns">
+        </mat-header-row>
+        <mat-row *matRowDef="let row; columns: ingDisplayedColumns;" [ngClass]="{'REFILL':checkStock(row.id)}" class="rowStyler">
+        </mat-row>
+      </mat-table>
+    </div>
+    <div *ngIf="nisTableReady&&nis" class="example-header mat-elevation-z8">
+      <mat-table #nistable [dataSource]="nisDataSource">
+          <ng-container matColumnDef="ingID">
+              <mat-header-cell *matHeaderCellDef> INGREDIENT ID </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> INGREDIENT NAME </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="isInStock">
+            <mat-header-cell *matHeaderCellDef> UPDATE </mat-header-cell>
+            <mat-cell *matCellDef="let row" (click)="refill(row.id)">
+              <button mat-button class="refillButton"> REFILLED </button>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="ingDisplayedColumns">
+          </mat-header-row>
+          <mat-row *matRowDef="let row; columns: ingDisplayedColumns;">
+          </mat-row>
+        </mat-table>
+    </div>
 	</div>
 </div>
